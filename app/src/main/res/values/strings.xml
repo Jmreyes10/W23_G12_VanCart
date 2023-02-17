@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">W23_G12_eCommerceApp</string>
+    <string name="txtLogo">Logo</string>
+    <string name="txtViewDrawer">eCommerce App</string>
+
+    <string-array name="Tags">
+        <item>Feature 01</item>
+        <item>Feature 02</item>
+        <item>Feature 03</item>
+        <item>Feature 04</item>
+        <item>Feature 05</item>
+        <item>Feature 06</item>
+    </string-array>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="headlines">Headers</string>
+    <string name="txtViewTitleFeature01">Feature 01</string>
+    <string name="txtViewTitleFeature02">Feature 02</string>
+    <string name="txtViewTitleFeature03">Feature 03</string>
+    <string name="txtViewTitleFeature04">Feature 04</string>
+    <string name="txtViewTitleFeature05">Feature 05</string>
+    <string name="txtViewTitleFeature06">Feature 06</string>
+
 </resources>

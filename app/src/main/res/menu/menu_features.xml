@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_feature01"
+        android:title="Feature 01"
+        />
+
+    <item
+        android:id="@+id/nav_feature02"
+        android:title="Feature 02"/>
+    <item
+        android:id="@+id/nav_feature03"
+        android:title="Feature 03"/>
+    <item
+        android:id="@+id/nav_feature04"
+        android:title="Feature 04"/>
+    <item
+        android:id="@+id/nav_feature05"
+        android:title="Feature 05"/>
+
+</menu>
