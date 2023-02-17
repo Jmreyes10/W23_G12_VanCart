@@ -1,7 +1,6 @@
 package com.example.w23_g12_ecommerceapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
