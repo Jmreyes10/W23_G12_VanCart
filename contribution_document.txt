@@ -8,3 +8,4 @@ Jose Mario Reues-[29 Jan 2023] All group members proposed an idea each to profes
 Shaun Ritty-[29 Jan 2023] All group members proposed an idea each to professor.
             [7 Feb 2023] Proposed few extensions to integrate with the application.
             [17 Feb 2023] Creating a reset password activity with firebase authentication. 
+            [08 March 2023] Added logo to the App. 
