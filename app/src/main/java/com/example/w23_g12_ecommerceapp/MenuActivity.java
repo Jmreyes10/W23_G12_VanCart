@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ public class MenuActivity extends AppCompatActivity {
     private CharSequence activityTitle;
     private CharSequence itemTitle;
     private String[] tagTitles;
+    TextView txtViewUsername;
+    DBHelper DB;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -35,6 +38,13 @@ public class MenuActivity extends AppCompatActivity {
         tagTitles = getResources().getStringArray(R.array.Tags);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.left_drawer);
+        txtViewUsername=findViewById(R.id.txtViewUsername);
+
+        DB = new DBHelper(this);
+        Bundle bundle=getIntent().getExtras();
+        String name=bundle.getString("NAME","NOTHING");
+        txtViewUsername.setText("Welcome "+name);
+
 
         //Create elements of the list
         ArrayList<DrawerItem> items = new ArrayList<DrawerItem>();

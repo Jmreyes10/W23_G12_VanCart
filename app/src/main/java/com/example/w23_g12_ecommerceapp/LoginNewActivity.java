@@ -38,8 +38,13 @@ public class LoginNewActivity extends AppCompatActivity {
                 else{
                     Boolean checkuserpass = DB.checkusernamepassword(user, pass);
                     if(checkuserpass==true){
+
+
                         Toast.makeText(LoginNewActivity.this, "Sign in successfull", Toast.LENGTH_SHORT).show();
                         Intent intent  = new Intent(getApplicationContext(), MenuActivity.class);
+                        Bundle bundle =new Bundle();
+                        bundle.putString("NAME",user);
+                        intent.putExtras(bundle);
                         startActivity(intent);
                     }else{
                         Toast.makeText(LoginNewActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
