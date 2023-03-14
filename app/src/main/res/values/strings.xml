@@ -21,5 +21,8 @@
     <string name="txtViewTitleFeature04">Feature 04</string>
     <string name="txtViewTitleFeature05">Feature 05</string>
     <string name="txtViewTitleFeature06">Feature 06</string>
+    <string name="txtLogin">Existing user! Go to Login page</string>
+    <string name="txtSignUp">Login</string>
+    <string name="txtRegister">Register</string>
 
 </resources>
