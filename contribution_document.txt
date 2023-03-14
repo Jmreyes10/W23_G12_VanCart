@@ -10,3 +10,4 @@ Shaun Ritty-[29 Jan 2023] All group members proposed an idea each to professor.
             [17 Feb 2023] Creating a reset password activity with firebase authentication. 
             [08 March 2023] Added logo to the App. 
             [13 March 2023] Created new login page and Sign Up page.Created new database called App using SQLite.User registeration and Login now possible.
+            [14 March 2023] Display logged username on menu page.
