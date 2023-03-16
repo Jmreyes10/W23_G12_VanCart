@@ -24,5 +24,8 @@
     <string name="txtLogin">Existing user! Go to Login page</string>
     <string name="txtSignUp">Login</string>
     <string name="txtRegister">Register</string>
+    <string name="txtForgotPassword">Forgot Password</string>
+    <string name="btn_changePassword">Change Password</string>
+    <string name="Change_password">Change Password</string>
 
 </resources>
