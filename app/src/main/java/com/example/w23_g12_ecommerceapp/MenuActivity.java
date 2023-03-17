@@ -25,8 +25,8 @@ public class MenuActivity extends AppCompatActivity {
     private CharSequence activityTitle;
     private CharSequence itemTitle;
     private String[] tagTitles;
-    TextView txtViewUsername;
-    DBHelper DB;
+//    TextView txtViewUsername;
+//    DBHelper DB;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -38,12 +38,12 @@ public class MenuActivity extends AppCompatActivity {
         tagTitles = getResources().getStringArray(R.array.Tags);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.left_drawer);
-        txtViewUsername=findViewById(R.id.txtViewUsername);
-
-        DB = new DBHelper(this);
-        Bundle bundle=getIntent().getExtras();
-        String name=bundle.getString("NAME","NOTHING");
-        txtViewUsername.setText("Welcome "+name);
+//        txtViewUsername=findViewById(R.id.txtViewUsername);
+//
+//        DB = new DBHelper(this);
+//        Bundle bundle=getIntent().getExtras();
+//        String name=bundle.getString("NAME","NOTHING");
+//        txtViewUsername.setText("Welcome "+name);
 
 
         //Create elements of the list
@@ -57,7 +57,7 @@ public class MenuActivity extends AppCompatActivity {
 
         // Relate the adapter and the DrawerItemClickListener
         drawerList.setAdapter(new DrawerListAdapter(this, items));
-        drawerList.setOnItemClickListener(new MenuActivity.DrawerItemClickListener());
+        drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -94,6 +94,7 @@ public class MenuActivity extends AppCompatActivity {
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Toast.makeText(MenuActivity.this, "SelectItem called", Toast.LENGTH_SHORT).show();
             selectItem(position);
         }
     }

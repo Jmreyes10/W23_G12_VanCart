@@ -6,15 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".Feature01Activity">
 
-    <TextView
-        android:id="@+id/txtViewTitleFeature01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="40dp"
-        android:text="@string/txtViewTitleFeature01"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/revProducts"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:background="#333"
+        android:padding="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

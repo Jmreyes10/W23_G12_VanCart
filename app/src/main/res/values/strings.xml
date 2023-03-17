@@ -4,7 +4,7 @@
     <string name="txtViewDrawer">eCommerce App</string>
 
     <string-array name="Tags">
-        <item>Feature 01</item>
+        <item>Browse Products</item>
         <item>Feature 02</item>
         <item>Feature 03</item>
         <item>Feature 04</item>
