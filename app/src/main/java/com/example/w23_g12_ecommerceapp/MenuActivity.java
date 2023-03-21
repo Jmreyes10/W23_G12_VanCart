@@ -14,6 +14,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
+
 import java.util.ArrayList;
 
 public class MenuActivity extends AppCompatActivity {
@@ -38,6 +42,16 @@ public class MenuActivity extends AppCompatActivity {
         tagTitles = getResources().getStringArray(R.array.Tags);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.left_drawer);
+
+        ImageSlider imageSlider = findViewById(R.id.imageSlider);
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel(R.drawable.slider1, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.slider2, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.slider3, ScaleTypes.FIT));
+
+        imageSlider.setImageList(slideModels, ScaleTypes.FIT);
+
+
 //        txtViewUsername=findViewById(R.id.txtViewUsername);
 //
 //        DB = new DBHelper(this);
@@ -107,7 +121,7 @@ public class MenuActivity extends AppCompatActivity {
 
         switch (position){
             case 0:
-                startActivity(new Intent(this, Feature01Activity.class));
+//                startActivity(new Intent(this, Feature01Activity.class));
                 break;
             case 1:
                 startActivity(new Intent(this, Feature02Activity.class));
