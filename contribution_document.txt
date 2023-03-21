@@ -1,6 +1,7 @@
 Harkirat Singh - [29 Jan 2023] All group members proposed an idea each to professor.
                  [7 Feb 2023] Emailed professor the basic idea of app and the proposed extensions to integrate with the application.
                  [17 Feb 2023] Created contributions file.
+                 [21 Mar 2023] Added the Image slider on home.
 
 Jose Mario Reues-[29 Jan 2023] All group members proposed an idea each to professor.
                  [16 Feb 2023] Created a login activity frame as a starting point, displaying the login and signup forms.
