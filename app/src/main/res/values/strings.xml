@@ -16,7 +16,7 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="headlines">Headers</string>
     <string name="txtViewTitleFeature01">Feature 01</string>
-    <string name="txtViewTitleFeature02">Feature 02</string>
+    <string name="txtViewTitleFeature02">Account Info.</string>
     <string name="txtViewTitleFeature03">Feature 03</string>
     <string name="txtViewTitleFeature04">Feature 04</string>
     <string name="txtViewTitleFeature05">Feature 05</string>
@@ -27,5 +27,13 @@
     <string name="txtForgotPassword">Forgot Password</string>
     <string name="btn_changePassword">Change Password</string>
     <string name="Change_password">Change Password</string>
+
+    <string name="login_txt">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register_txt">Register</string>
+    <string name="already_reg">Click to Sign In!</string>
+    <string name="notyet_reg">Click to Register!</string>
+    <string name="logout">Logout</string>
 
 </resources>

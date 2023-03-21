@@ -17,7 +17,7 @@
         app:layout_constraintVertical_bias="0.16000003" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/editPasswordText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
@@ -33,7 +33,7 @@
         android:hint="Retype Password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/editPasswordText"
         app:layout_constraintVertical_bias="0.13" />
 
     <Button
