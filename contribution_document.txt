@@ -5,6 +5,7 @@ Harkirat Singh - [29 Jan 2023] All group members proposed an idea each to profes
                  [21 Mar 2023] Created the logo and included that in login page.
                  [21 Mar 2023] Created the login/register page and included them in launcher activity with proper logic.
                  [21 Mar 2023] Created the signout button and added that to nav slider.
+                 [22 Mar 2023] Created the splash screen with MotionLayout and implemented the logo with it.
 
 Jose Mario Reues-[29 Jan 2023] All group members proposed an idea each to professor.
                  [16 Feb 2023] Created a login activity frame as a starting point, displaying the login and signup forms.
