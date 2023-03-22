@@ -10,9 +10,9 @@
         android:allowClearUserData="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher_logo"
+        android:icon="@mipmap/ic_launcher_vc"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_logo_round"
+        android:roundIcon="@mipmap/ic_launcher_vc"
         android:supportsRtl="true"
         android:theme="@style/Theme.W23_G12_eCommerceApp"
         android:usesCleartextTraffic="true"
@@ -149,6 +149,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
