@@ -42,6 +42,7 @@ public class Login_App extends AppCompatActivity {
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_app);
         editEmailText = findViewById(R.id.editEmailText);
