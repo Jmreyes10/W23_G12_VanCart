@@ -207,7 +207,7 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_feature01:
-                startActivity(new Intent(this, MenuActivity.class));
+                startActivity(new Intent(this, Feature01Activity.class));
                 break;
             case R.id.nav_feature02:
                 startActivity(new Intent(this, Feature02Activity.class));
