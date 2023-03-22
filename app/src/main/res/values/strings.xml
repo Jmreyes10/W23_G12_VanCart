@@ -36,4 +36,34 @@
     <string name="notyet_reg">Click to Register!</string>
     <string name="logout">Logout</string>
 
+    <string name="txtCategTitle">Select Category</string>
+    <string name="addToCart">Add to Cart</string>
+    <string name="viewCart">View Cart</string>
+    <string-array name="prod_categories">
+        <item>All</item>
+        <item>Arts, Crafts &amp; Sewing</item>
+        <item>Automotive</item>
+        <item>Baby Products</item>
+        <item>Beauty &amp; Personal Care</item>
+        <item>Cell Phones &amp; Accessories</item>
+        <item>Clothing, Shoes &amp; Jewelry</item>
+        <item>Electronics</item>
+        <item>Grocery &amp; Gourmet Food</item>
+        <item>Health &amp; Household</item>
+        <item>Hobbies</item>
+        <item>Home &amp; Kitchen</item>
+        <item>Industrial &amp; Scientific</item>
+        <item>Movies &amp; TV</item>
+        <item>Musical Instruments</item>
+        <item>Office Products</item>
+        <item>Patio, Lawn &amp; Garden</item>
+        <item>Pet Supplies</item>
+        <item>Remote &amp; App Controlled Vehicle Parts</item>
+        <item>Remote &amp; App Controlled Vehicles &amp; Parts</item>
+        <item>Sports &amp; Outdoors</item>
+        <item>Tools &amp; Home Improvement</item>
+        <item>Toys &amp; Games</item>
+        <item>Video Games</item>
+    </string-array>
+
 </resources>

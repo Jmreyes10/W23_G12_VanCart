@@ -108,7 +108,7 @@ public class MenuActivity extends AppCompatActivity {
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Toast.makeText(MenuActivity.this, "SelectItem called", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(MenuActivity.this, "SelectItem called", Toast.LENGTH_SHORT).show();
             selectItem(position);
         }
     }
@@ -121,7 +121,7 @@ public class MenuActivity extends AppCompatActivity {
 
         switch (position){
             case 0:
-//                startActivity(new Intent(this, Feature01Activity.class));
+                startActivity(new Intent(this, Feature01Activity.class));
                 break;
             case 1:
                 startActivity(new Intent(this, Feature02Activity.class));
