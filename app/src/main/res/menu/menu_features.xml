@@ -1,22 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/nav_feature01"
-        android:title="Browse Products"
-        />
+    <group android:checkableBehavior="single">
 
-    <item
-        android:id="@+id/nav_feature02"
-        android:title="Feature 02"/>
-    <item
-        android:id="@+id/nav_feature03"
-        android:title="Feature 03"/>
-    <item
-        android:id="@+id/nav_feature04"
-        android:title="Feature 04"/>
-    <item
-        android:id="@+id/nav_feature05"
-        android:title="Feature 05"/>
+        <item
+            android:id="@+id/nav_feature01"
+            android:icon="@drawable/baseline_home_24"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_feature02"
+            android:icon="@drawable/baseline_bug_report_24"
+            android:title="Report a problem" />
+        <item
+            android:id="@+id/nav_feature03"
+            android:icon="@drawable/baseline_contact_support_24"
+            android:title="Contact Us" />
+        <item
+            android:id="@+id/nav_feature04"
+            android:icon="@drawable/baseline_info_24"
+            android:title="About" />
+        <item
+            android:id="@+id/nav_feature05"
+            android:icon="@drawable/baseline_question_answer_24"
+            android:title="FAQs" />
+
+    </group>
+
+    <item android:title="Profile">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/baseline_man_24"
+                    android:title="Profile" />
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/baseline_logout_24"
+                    android:title="Logout" />
+            </group>
+
+        </menu>
+
+    </item>
 
 </menu>
