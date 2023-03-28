@@ -1,0 +1,15 @@
+Jose Mario Reyes - [22 Mar 2023] Updated the API interface to connect to the server to retrieve the products
+                   [22 Mar 2023] Displayed retrieved products in a RecyclerView.
+                   [22 Mar 2023] Included a spinner to select the product category.
+                   [22 Mar 2023] Added funtionality of filtering the products list according to selected category.
+                   [22 Mar 2023] Included an "Add to cart" option for each displayed item.
+                   [22 Mar 2023] Included a counter for the number of items in cart.
+                   [22 Mar 2023] Included a button to view cart.
+                   [27 Mar 2023] Created a Room Database to save products added to cart
+                   [27 Mar 2023] Created a ViewCart activity including the following functionalities:
+                   [27 Mar 2023] -Display data of the products added to cart (product, price) in a recyclerview.
+                   [27 Mar 2023] -Display the selected quantity of each product in the recyclerview, including "+" and "-" icons to increase/decrease the selected quantity.
+                   [27 Mar 2023] -Include a "remove" option for each product in the recyclerview so that the user is able to take it out from the cart.
+                   [27 Mar 2023] -Include the totals (subtotal, shipping, tax and total) depending on the price and quantities of the selected products. These total are automatically updated when changing quantities or removing products from the cart.
+                   [27 Mar 2023] -One button to go back to the products list to continue shopping.
+                   [27 Mar 2023] -One button to start the "checkout" activity.
