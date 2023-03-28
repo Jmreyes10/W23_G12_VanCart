@@ -9,7 +9,7 @@ Harkirat Singh - [29 Jan 2023] All group members proposed an idea each to profes
                  [22 Mar 2023] Customized and created a material looking nav slider with icons and colors implemented.
                  [22 Mar 2023] Implemented the sign out button in nav slider and set gradient for actionbar.
 
-Jose Mario Reues-[29 Jan 2023] All group members proposed an idea each to professor.
+Jose Mario Reyes-[29 Jan 2023] All group members proposed an idea each to professor.
                  [16 Feb 2023] Created a login activity frame as a starting point, displaying the login and signup forms.
                  [16 Feb 2023] Created a draer list to diplay a menu with the different features of the app.
                  [16 Feb 2023] Uploaded the project to GitHub and included the professor as collaborator.
