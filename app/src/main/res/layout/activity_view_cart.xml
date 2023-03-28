@@ -7,12 +7,189 @@
     tools:context=".ViewCart">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/tvCartTitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/txtViewCartTitle"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/tvCartTotals"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCartTitle">
+
+        <include
+            layout="@layout/product_cart_header"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvProductsInCart"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvCartTotals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shopping Totals:"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvSubTotal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/container" />
+
+    <TextView
+        android:id="@+id/tvSubTotal"
+        android:text="Subtotal: "
+        android:textAlignment="textEnd"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvCartTotals"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tvShipping" />
+
+    <TextView
+        android:id="@+id/tvSubTotalVal"
+        android:text="$0.00"
+        android:textAlignment="textEnd"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvCartTotals"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvSubTotal"
+        app:layout_constraintBottom_toTopOf="@+id/tvShipping" />
+
+    <TextView
+        android:id="@+id/tvShipping"
+        android:text="Shipping: "
+        android:textAlignment="textEnd"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubTotal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tvTaxes" />
+
+    <TextView
+        android:id="@+id/tvShippingVal"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="$0.00"
+        android:textAlignment="textEnd"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubTotal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvShipping"
+        app:layout_constraintBottom_toTopOf="@+id/tvTaxes" />
+
+    <TextView
+        android:id="@+id/tvTaxes"
+        android:text="Tax: "
+        android:textAlignment="textEnd"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvShipping"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tvTotal" />
+
+    <TextView
+        android:id="@+id/tvTaxesVal"
+        android:text="$0.00"
+        android:textAlignment="textEnd"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvShipping"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvTaxes"
+        app:layout_constraintBottom_toTopOf="@+id/tvTotal" />
+
+    <TextView
+        android:id="@+id/tvTotal"
+        android:text="Total: "
+        android:textAlignment="textEnd"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvTaxes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnCancelViewCart" />
+
+    <TextView
+        android:id="@+id/tvTotalVal"
+        android:text="$0.00"
+        android:textAlignment="textEnd"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvTaxes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvTotal"
+        app:layout_constraintBottom_toTopOf="@+id/btnCancelViewCart" />
+
+    <View
+        android:id="@+id/vDiv"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalVal"
+        app:layout_constraintBottom_toTopOf="@+id/btnCancelViewCart"/>
+
+    <Button
+        android:id="@+id/btnCancelViewCart"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="20dp"
+        android:text="&lt;Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnCheckOut"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vDiv" />
+
+    <Button
+        android:id="@+id/btnCheckOut"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="20dp"
+        android:text="Check Out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnCancelViewCart"
+        app:layout_constraintTop_toBottomOf="@+id/vDiv" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

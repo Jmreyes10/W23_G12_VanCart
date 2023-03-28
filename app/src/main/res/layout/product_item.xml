@@ -2,18 +2,14 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="0dp"
-    app:cardElevation="0dp"
-    app:cardBackgroundColor="@android:color/transparent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_margin="1dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="7dp"
-        android:elevation="2dp"
-        android:background="@drawable/layout_custom_items"
->
+        android:layout_margin="0dp">
 
         <ImageView
             android:id="@+id/ivProduct"
@@ -21,42 +17,28 @@
             android:layout_height="100dp"
             android:padding="2dp" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/tvId"-->
-<!--            android:layout_width="200dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentTop="true"-->
-<!--            android:layout_marginStart="10dp"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            android:layout_toRightOf="@+id/ivProduct"-->
-<!--            android:text="Id"-->
-<!--            android:textColor="#000"-->
-<!--            android:textSize="15sp" />-->
         <TextView
-            android:id="@+id/tvName"
+            android:id="@+id/tvId"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:layout_toEndOf="@+id/ivProduct"
             android:layout_toRightOf="@+id/ivProduct"
-            android:fontFamily="@font/roboto"
-            android:text="Iddddd2"
+            android:text="Id"
             android:textColor="#000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/tvCategory"
+            android:id="@+id/tvName"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvName"
+            android:layout_below="@+id/tvId"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/ivProduct"
             android:layout_toRightOf="@+id/ivProduct"
             android:text="Iddddd2"
             android:textColor="#000"
@@ -66,7 +48,7 @@
             android:id="@+id/tvPrice"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvCategory"
+            android:layout_below="@+id/tvName"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
@@ -76,6 +58,19 @@
             android:textColor="#000"
             android:textSize="15sp" />
 
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvPrice"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/ivProduct"
+            android:layout_toRightOf="@+id/ivProduct"
+            android:text="Iddddd2"
+            android:textColor="#000"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tvAddToCart"
@@ -84,11 +79,10 @@
             android:layout_marginStart="20dp"
             android:gravity="center"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/tvPrice"
+            android:layout_toRightOf="@id/tvCategory"
             android:text="@string/addToCart"
-            android:textColor="@color/primary"
-            android:textSize="15sp"
-            android:textStyle="bold"/>
+            android:textColor="#0009ff"
+            android:textSize="15sp" />
 
     </RelativeLayout>
 

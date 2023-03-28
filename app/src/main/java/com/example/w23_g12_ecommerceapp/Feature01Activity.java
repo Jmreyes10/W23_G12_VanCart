@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.w23_g12_ecommerceapp.dao.ProductDatabase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,6 +36,8 @@ public class Feature01Activity extends AppCompatActivity {
     private TextView txtItemsCart;
     private Button btnViewCart;
     List<Product> productsInCart = new ArrayList<>();
+    ProductAdapter productAdapter;
+    ProductDatabase productDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +51,15 @@ public class Feature01Activity extends AppCompatActivity {
         spinnerCategory = findViewById(R.id.spinnerCategories);
         btnViewCart = findViewById(R.id.btnViewCart);
 
+        productDatabase = Room.databaseBuilder(
+                getApplicationContext(),
+                ProductDatabase.class,
+                "products_db"
+        ).allowMainThreadQueries().build();
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.prod_categories, android.R.layout.simple_spinner_item);
+
         spinnerCategory.setAdapter(adapter);
 
         spinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -63,33 +75,9 @@ public class Feature01Activity extends AppCompatActivity {
         });
 
         btnViewCart.setOnClickListener((View v)-> {
-            int numItems = productsInCart.size();
-            long[] prodsId = new long[numItems];
-            String[] prodsCode = new String[numItems];
-            String[] prodsName = new String[numItems];
-            String[] prodCategory = new String[numItems];
-            String[] prodImgUrl = new String[numItems];
-            double[] prodsPrice = new double[numItems];
-            for(int c=0;c<numItems;c++){
-                prodsId[c]=productsInCart.get(c).getId();
-                prodsCode[c]=productsInCart.get(c).getProdCode();
-                prodsName[c]=productsInCart.get(c).getProdName();
-                prodCategory[c]=productsInCart.get(c).getProdCategory();
-                prodImgUrl[c]=productsInCart.get(c).getProdImgUrl();
-                prodsPrice[c]=productsInCart.get(c).getProdPrice();
-            }
-            
-            Intent intent = new Intent(this, ViewCart.class);
-            Bundle bundle = new Bundle();
-            bundle.putInt("numItems", numItems);
-            bundle.putLongArray("prodsId", prodsId);
-            bundle.putStringArray("prodsCode",prodsCode);
-            bundle.putStringArray("prodsName",prodsName);
-            bundle.putStringArray("prodCategory",prodCategory);
-            bundle.putStringArray("prodImgUrl",prodImgUrl);
-            bundle.putDoubleArray("prodsPrice",prodsPrice);
-            intent.putExtras(bundle);
-            startActivity(intent);
+            productDatabase.productDao().insert(productsInCart);
+            int rowCount = productDatabase.productDao().getRowCount();
+            startActivity(new Intent(Feature01Activity.this, ViewCart.class));
         });
     }
 
@@ -101,6 +89,14 @@ public class Feature01Activity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onRestart(){
+        super.onRestart();
+        productsInCart = productDatabase.productDao().getAll();
+        txtItemsCart.setText("Number of items in cart: "+productsInCart.size());
+        loadData(spinnerCategory.getSelectedItem().toString());
     }
 
     public void loadData(String prodCategory){
@@ -118,7 +114,8 @@ public class Feature01Activity extends AppCompatActivity {
                 List<Product> products = response.body();
                 revProducts = findViewById(R.id.revProducts);
                 revProducts.setLayoutManager(new LinearLayoutManager(Feature01Activity.this));
-                revProducts.setAdapter(new ProductAdapter(Feature01Activity.this, products, txtItemsCart, productsInCart));
+                productAdapter = new ProductAdapter(Feature01Activity.this, products, txtItemsCart, productsInCart);
+                revProducts.setAdapter(productAdapter);
             }
 
             @Override

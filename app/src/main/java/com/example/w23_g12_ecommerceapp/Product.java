@@ -1,12 +1,28 @@
 package com.example.w23_g12_ecommerceapp;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "products")
 public class Product {
 
+    @PrimaryKey
     private long id;
+
+    @ColumnInfo(name="prod_code")
     private String prodCode;
+
+    @ColumnInfo(name = "prod_name")
     private String prodName;
+
+    @ColumnInfo(name = "prod_category")
     private String prodCategory;
+
+    @ColumnInfo(name = "prod_imgurl")
     private String prodImgUrl;
+
+    @ColumnInfo(name = "product_price")
     private double prodPrice;
 
     public Product() {

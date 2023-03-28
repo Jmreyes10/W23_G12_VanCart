@@ -24,6 +24,7 @@ import android.widget.Toolbar;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.w23_g12_ecommerceapp.dao.ProductDatabase;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -54,7 +55,6 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-
 
         getSupportActionBar().setTitle("VanCart");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -1,48 +1,84 @@
 package com.example.w23_g12_ecommerceapp;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.os.Bundle;
-import android.os.Parcelable;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.w23_g12_ecommerceapp.dao.ProductDatabase;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ViewCart extends AppCompatActivity {
 
-    TextView textView;
+    private RecyclerView rvProductsInCart;
+    private TextView tvSubTotalVal, tvShippingVal, tvTaxesVal, tvTotalVal;
+    private Button btnCancelViewCart;
+    private List<Product> productsInCart;
+    private List<Integer> prodQtty = new ArrayList<>();
+    private final double TAX_RATE = 0.10;
+    private double shipping = 20.00;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_cart);
 
-        ArrayList<Product> productsInCart = new ArrayList<>();
+        ProductDatabase productDatabase = Room.databaseBuilder(
+                getApplicationContext(),
+                ProductDatabase.class,
+                "products_db"
+        ).allowMainThreadQueries().build();
 
-        Bundle bundle = getIntent().getExtras();
-        int numItems = productsInCart.size();
-        long[] prodsId = new long[numItems];
-        String[] prodsCode = new String[numItems];
-        String[] prodsName = new String[numItems];
-        String[] prodCategory = new String[numItems];
-        String[] prodImgUrl = new String[numItems];
-        double[] prodsPrice = new double[numItems];
+        rvProductsInCart = findViewById(R.id.rvProductsInCart);
+        tvSubTotalVal = findViewById(R.id.tvSubTotalVal);
+        tvShippingVal = findViewById(R.id.tvShippingVal);
+        tvTaxesVal = findViewById(R.id.tvTaxesVal);
+        tvTotalVal = findViewById(R.id.tvTotalVal);
+        btnCancelViewCart = findViewById(R.id.btnCancelViewCart);
 
-        numItems = bundle.getInt("numItems");
-        prodsId = bundle.getLongArray("prodsId");
-        prodsCode= bundle.getStringArray("prodsCode");
-        prodsName= bundle.getStringArray("prodsName");
-        prodCategory= bundle.getStringArray("prodCategory");
-        prodImgUrl= bundle.getStringArray("prodImgUrl");
-        prodsPrice = bundle.getDoubleArray("prodsPrice");
+        productsInCart = productDatabase.productDao().getAll();
+        for (int i = 0; i < productsInCart.size(); i++)
+            prodQtty.add(1);
 
-        for(int i=0;i<numItems;i++){
-            productsInCart.add(new Product(prodsId[i], prodsCode[i], prodsName[i], prodCategory[i], prodImgUrl[i], prodsPrice[i]));
-        }
+        rvProductsInCart.setLayoutManager(new LinearLayoutManager(ViewCart.this));
+//        ProductCartAdapter productCartAdapter = new ProductCartAdapter(ViewCart.this, productDatabase.productDao().getAll(), prodQtty);
+        ProductCartAdapter productCartAdapter = new ProductCartAdapter(ViewCart.this, productsInCart, prodQtty);
+        productCartAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onChanged() {
+                double subTotal = 0;
+                for (int i = 0; i < productsInCart.size(); i++)
+                    subTotal += productsInCart.get(i).getProdPrice() * prodQtty.get(i);
 
-        textView = findViewById(R.id.textView);
-        textView.setText(productsInCart.get(0).getProdName().toString());
+                double tax = (subTotal + shipping) * TAX_RATE;
+                double total = (subTotal + shipping + tax);
+
+                tvSubTotalVal.setText("$" + roundTwoDecimals(subTotal));
+                tvShippingVal.setText("$" + roundTwoDecimals(shipping));
+                tvTaxesVal.setText("$" + roundTwoDecimals(tax));
+                tvTotalVal.setText("$" + roundTwoDecimals(total));
+            }
+        });
+        rvProductsInCart.setAdapter(productCartAdapter);
+        productCartAdapter.notifyDataSetChanged();
+
+        btnCancelViewCart.setOnClickListener((View v) -> {
+            finish();
+        });
     }
+
+    public double roundTwoDecimals(double d)
+    {
+        DecimalFormat twoDForm = new DecimalFormat("#,###,###.00");
+        return Double.valueOf(twoDForm.format(d));
+    }
+
 }

@@ -22,7 +22,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     private TextView txtItemsCart;
     private List<Product> productsInCart;
 
-
     public ProductAdapter(Context context, List<Product> products, TextView txtItemsCart, List<Product> productsInCart) {
         this.context = context;
         this.products = products;
@@ -33,14 +32,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     @NonNull
     @Override
-    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ProductAdapter.ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.product_item, parent, false);
         return new ProductViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductAdapter.ProductViewHolder holder, int position) {
         Product p = products.get(position);
         String url = p.getProdImgUrl();
         Glide.with(context)
@@ -48,9 +47,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 .centerCrop()
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(holder.ivProduct);
+//        holder.tvId.setText("Id: " + p.getId());
         holder.tvName.setText(p.getProdName());
-        holder.tvCategory.setText("Category: " + p.getProdCategory());
         holder.tvPrice.setText("Price: " + p.getProdPrice());
+        holder.tvCategory.setText(p.getProdCategory());
     }
 
     @Override
@@ -73,9 +73,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             tvAddToCart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    productsInCart.add(products.get(getAdapterPosition()));
-                    txtItemsCart.setText("Number of items in cart: "+productsInCart.size());
-                    Toast.makeText(context,"Product added to cart",Toast.LENGTH_SHORT).show();
+                    int position = getAdapterPosition();
+                    boolean added = false;
+                    for(Product p:productsInCart){
+                        if (p.getProdCode().equals(products.get(position).getProdCode()))
+                            added = true;
+                    }
+                    if(added){
+                        Toast.makeText(context, "This product has already been added to cart!", Toast.LENGTH_SHORT).show();
+                    }else{
+                        productsInCart.add(products.get(getAdapterPosition()));
+                        txtItemsCart.setText("Number of items in cart: "+productsInCart.size());
+                        Toast.makeText(context,"Product added to cart",Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }

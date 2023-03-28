@@ -39,6 +39,7 @@
     <string name="txtCategTitle">Select Category</string>
     <string name="addToCart">Add to Cart</string>
     <string name="viewCart">View Cart</string>
+    <string name="txtViewCartTitle">Shopping Cart:</string>
     <string-array name="prod_categories">
         <item>All</item>
         <item>Arts, Crafts &amp; Sewing</item>
