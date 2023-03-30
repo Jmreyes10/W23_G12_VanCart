@@ -9,7 +9,7 @@ Harkirat Singh - [29 Jan 2023] All group members proposed an idea each to profes
                  [22 Mar 2023] Customized and created a material looking nav slider with icons and colors implemented.
                  [22 Mar 2023] Implemented the sign out button in nav slider and set gradient for actionbar.
 
-Jose Mario Reues-[29 Jan 2023] All group members proposed an idea each to professor.
+Jose Mario Reyes-[29 Jan 2023] All group members proposed an idea each to professor.
                  [16 Feb 2023] Created a login activity frame as a starting point, displaying the login and signup forms.
                  [16 Feb 2023] Created a draer list to diplay a menu with the different features of the app.
                  [16 Feb 2023] Uploaded the project to GitHub and included the professor as collaborator.
@@ -17,6 +17,21 @@ Jose Mario Reues-[29 Jan 2023] All group members proposed an idea each to profes
                  [08 Mar 2023] Created a RESTful API to funtion as a server with all data related to products (outside Android Studio).
                  [17 Mar 2023| Incuded API connection in the app to retrieve the products data from local host server.
                  [17 Mar 2023] Created the "Browse Products" option in the app loading the products data retrieved from the API in a RecyclerView to display the product, 
+                 [22 Mar 2023] Updated the API interface to connect to the server to retrieve the products
+                 [22 Mar 2023] Displayed retrieved products in a RecyclerView.
+                 [22 Mar 2023] Included a spinner to select the product category.
+                 [22 Mar 2023] Added funtionality of filtering the products list according to selected category.
+                 [22 Mar 2023] Included an "Add to cart" option for each displayed item.
+                 [22 Mar 2023] Included a counter for the number of items in cart.
+                 [22 Mar 2023] Included a button to view cart.
+                 [27 Mar 2023] Created a Room Database to save products added to cart
+                 [27 Mar 2023] Created a ViewCart activity including the following functionalities:
+                 [27 Mar 2023] -Display data of the products added to cart (product, price) in a recyclerview.
+                 [27 Mar 2023] -Display the selected quantity of each product in the recyclerview, including "+" and "-" icons to increase/decrease the selected quantity.
+                 [27 Mar 2023] -Include a "remove" option for each product in the recyclerview so that the user is able to take it out from the cart.
+                 [27 Mar 2023] -Include the totals (subtotal, shipping, tax and total) depending on the price and quantities of the selected products. These total are automatically updated when changing quantities or removing products from the cart.
+                 [27 Mar 2023] -One button to go back to the products list to continue shopping.
+                 [27 Mar 2023] -One button to start the "checkout" activity.
                  
 Shaun Ritty-[29 Jan 2023] All group members proposed an idea each to professor.
             [7 Feb 2023] Proposed few extensions to integrate with the application.
@@ -26,3 +41,7 @@ Shaun Ritty-[29 Jan 2023] All group members proposed an idea each to professor.
             [14 March 2023] Display logged username on menu page.
             [16 March 2023] Forgot password implemented.
             [16 March 2023] Notification extension added.
+            [22 March 2023] Implemeted autofill address for checkoit page.
+            [28 March 2023] calculate distance between two locations.
+            
+            
