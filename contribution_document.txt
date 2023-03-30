@@ -41,3 +41,7 @@ Shaun Ritty-[29 Jan 2023] All group members proposed an idea each to professor.
             [14 March 2023] Display logged username on menu page.
             [16 March 2023] Forgot password implemented.
             [16 March 2023] Notification extension added.
+            [22 March 2023] Implemeted autofill address for checkoit page.
+            [28 March 2023] calculate distance between two locations.
+            
+            
