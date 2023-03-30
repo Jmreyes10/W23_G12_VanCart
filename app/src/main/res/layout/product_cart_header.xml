@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#e9e9e9">
+
+    <TextView
+        android:id="@+id/tvProdCartNameHeader"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Product"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/tvProdCartPriceHeader"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/tvProdCartQtyHeader"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="Qtty"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvProdCartSubTotHeader"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Subtot"-->
+<!--        android:gravity="center"-->
+<!--        />-->
+
+    <TextView
+        android:id="@+id/tvProdCartRemove"
+        android:layout_width="90dp"
+        android:textAlignment="textEnd"
+        android:textStyle="bold"
+        android:text="Remove"
+        android:layout_height="wrap_content"
+        />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

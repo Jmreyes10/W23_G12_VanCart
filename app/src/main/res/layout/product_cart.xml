@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvProdCartName"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvProdCartPrice"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="textEnd"
+        />
+
+    <TextView
+        android:id="@+id/tvProdCartQty"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="textEnd"
+        />
+
+    <ImageView
+        android:id="@+id/ivAddQtty"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:paddingLeft="5dp"
+        android:src="@drawable/add_icon"/>
+
+    <ImageView
+        android:id="@+id/ivMinusQtty"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:paddingLeft="5dp"
+        android:src="@drawable/minus_icon"/>
+
+    <!--    <TextView-->
+<!--        android:id="@+id/tvProdCartSubTot"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textAlignment="textEnd"-->
+<!--        />-->
+
+    <TextView
+        android:id="@+id/tvProdCartRemove"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="Remove"
+        android:gravity="center"
+        android:textColor="#0009ff"
+        android:textSize="10dp"
+        />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
