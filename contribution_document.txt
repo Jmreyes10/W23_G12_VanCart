@@ -43,5 +43,7 @@ Shaun Ritty-[29 Jan 2023] All group members proposed an idea each to professor.
             [16 March 2023] Notification extension added.
             [22 March 2023] Implemeted autofill address for checkoit page.
             [28 March 2023] calculate distance between two locations.
+            [30 March 2023] Create checkout page with distance matrix api
+            [02 April 2023] Created driver page. Order details showed and google map navigation.
             
             
