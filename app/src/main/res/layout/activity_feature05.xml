@@ -7,14 +7,163 @@
     tools:context=".Feature05Activity">
 
     <TextView
-        android:id="@+id/txtViewTitleFeature05"
+        android:id="@+id/tvRatingTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="40dp"
-        android:text="@string/txtViewTitleFeature05"
+        android:text="@string/txtRatingTitle"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:paddingLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tvRatingSubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtRatingSubTitle"
+        android:layout_marginTop="15dp"
+        android:textSize="15dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRatingTitle"
+        />
+
+    <TextView
+        android:id="@+id/tvRatingQ1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtRatingQ1"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRatingSubTitle"
+        />
+
+    <RatingBar
+        android:id="@+id/ratingBarQ1"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRatingQ1"
+        />
+
+    <ImageView
+        android:id="@+id/ivRatingQ1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toEndOf="@id/ratingBarQ1"
+        app:layout_constraintTop_toTopOf="@id/ratingBarQ1"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tvRatingQ2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtRatingQ2"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBarQ1"
+        />
+
+    <RatingBar
+        android:id="@+id/ratingBarQ2"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRatingQ2"
+        />
+
+    <ImageView
+        android:id="@+id/ivRatingQ2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toEndOf="@id/ratingBarQ2"
+        app:layout_constraintTop_toTopOf="@id/ratingBarQ2"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tvRatingQ3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtRatingQ3"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBarQ2"
+        />
+
+    <RatingBar
+        android:id="@+id/ratingBarQ3"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRatingQ3"
+        />
+
+    <ImageView
+        android:id="@+id/ivRatingQ3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toEndOf="@id/ratingBarQ3"
+        app:layout_constraintTop_toTopOf="@id/ratingBarQ3"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tvRatingQ4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtRatingQ4"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBarQ3"
+        />
+
+    <RatingBar
+        android:id="@+id/ratingBarQ4"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRatingQ4"
+        />
+
+    <ImageView
+        android:id="@+id/ivRatingQ4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toEndOf="@id/ratingBarQ4"
+        app:layout_constraintTop_toTopOf="@id/ratingBarQ4"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <Button
+        android:id="@+id/btnSumbitRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtRatingSubmit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ratingBarQ4"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

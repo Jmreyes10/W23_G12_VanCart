@@ -67,4 +67,12 @@
         <item>Video Games</item>
     </string-array>
 
+    <string name="txtRatingTitle">Let us know your feedback...</string>
+    <string name="txtRatingSubTitle">Please rate the app on the following aspects:</string>
+    <string name="txtRatingQ1">Easy to use</string>
+    <string name="txtRatingQ2">Completeness of features included</string>
+    <string name="txtRatingQ3">Reliability</string>
+    <string name="txtRatingQ4">Overal experience</string>
+    <string name="txtRatingSubmit">Submit Ratings</string>
+
 </resources>
