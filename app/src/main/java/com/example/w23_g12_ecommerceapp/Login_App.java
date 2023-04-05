@@ -79,24 +79,33 @@ public class Login_App extends AppCompatActivity {
                     return;
                 }
 
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(Login_App.this, "Login successful.",
-                                            Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(Login_App.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
+                if(email.equals("driver@gmail.com") && password.equals("driver123")){
+                    Intent intent=new Intent(getApplicationContext(),DriverApp.class);
+                    startActivity(intent);
+                }else{
+
+                    mAuth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    progressBar.setVisibility(View.GONE);
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(Login_App.this, "Login successful.",
+                                                Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+                                        Toast.makeText(Login_App.this, "Authentication failed.",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
+
+                }
+
+
 
             }
         });

@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,7 @@ public class ViewCart extends AppCompatActivity {
     private RecyclerView rvProductsInCart;
     private TextView tvSubTotalVal, tvShippingVal, tvTaxesVal, tvTotalVal;
     private Button btnCancelViewCart;
+    private Button btnCheckOut;
     private List<Product> productsInCart;
     private List<Integer> prodQtty = new ArrayList<>();
     private final double TAX_RATE = 0.10;
@@ -43,6 +45,7 @@ public class ViewCart extends AppCompatActivity {
         tvTaxesVal = findViewById(R.id.tvTaxesVal);
         tvTotalVal = findViewById(R.id.tvTotalVal);
         btnCancelViewCart = findViewById(R.id.btnCancelViewCart);
+        btnCheckOut=findViewById(R.id.btnCheckOut);
 
         productsInCart = productDatabase.productDao().getAll();
         for (int i = 0; i < productsInCart.size(); i++)
@@ -73,6 +76,17 @@ public class ViewCart extends AppCompatActivity {
         btnCancelViewCart.setOnClickListener((View v) -> {
             finish();
         });
+
+
+
+        btnCheckOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CheckOut.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public double roundTwoDecimals(double d)
