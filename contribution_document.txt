@@ -27,11 +27,24 @@ Jose Mario Reyes-[29 Jan 2023] All group members proposed an idea each to profes
                  [27 Mar 2023] Created a Room Database to save products added to cart
                  [27 Mar 2023] Created a ViewCart activity including the following functionalities:
                  [27 Mar 2023] -Display data of the products added to cart (product, price) in a recyclerview.
-                 [27 Mar 2023] -Display the selected quantity of each product in the recyclerview, including "+" and "-" icons to increase/decrease the selected quantity.
+                 [27 Mar 2023] -Display the selected quantity of each product in the recyclerview, including "+" and "-" icons to increase/decrease the selected 
+                                quantity.
                  [27 Mar 2023] -Include a "remove" option for each product in the recyclerview so that the user is able to take it out from the cart.
-                 [27 Mar 2023] -Include the totals (subtotal, shipping, tax and total) depending on the price and quantities of the selected products. These total are automatically updated when changing quantities or removing products from the cart.
+                 [27 Mar 2023] -Include the totals (subtotal, shipping, tax and total) depending on the price and quantities of the selected products. These total are 
+                                automatically updated when changing quantities or removing products from the cart.
                  [27 Mar 2023] -One button to go back to the products list to continue shopping.
                  [27 Mar 2023] -One button to start the "checkout" activity.
+                 [05 Apr 2023] - Changed menu option title from "Home" to "View Items"
+                 [05 Apr 2023] - Changed menu option title from "FAQs" to "Rate Us"
+                 [05 Apr 2023] - Created RatingActivity to caputure the ratings of the cusomer on 4 different aspects of the app
+                 [05 Apr 2023] - Created and saved in Raw folder a cvs file with simulated historical ratings data
+                 [05 Apr 2023] - Created a DashBoardActivity with the following functionalities:
+                 [05 Apr 2023] - Read the historical ratings file
+                 [05 Apr 2023] - Append the ratings given by the current app user
+                 [05 Apr 2023] - Display a dashboard with 4 pie charts showing the rates distribution for the correspondent aspect and one bar chart showing the average 
+                                 rating for each of the 4 aspects
+                 [05 Apr 2023] - Included a button to go back to the main menu
+
                  
 Shaun Ritty-[29 Jan 2023] All group members proposed an idea each to professor.
             [7 Feb 2023] Proposed few extensions to integrate with the application.
