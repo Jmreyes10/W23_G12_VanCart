@@ -8,6 +8,13 @@ Harkirat Singh - [29 Jan 2023] All group members proposed an idea each to profes
                  [22 Mar 2023] Created the splash screen with MotionLayout and implemented the logo with it.
                  [22 Mar 2023] Customized and created a material looking nav slider with icons and colors implemented.
                  [22 Mar 2023] Implemented the sign out button in nav slider and set gradient for actionbar.
+                 [06 Apr 2023]Added Stripe Payment Gateway
+                 [06 Apr 2023]-Created a server side with Node.js and hosted it on FireBase
+                 [06 Apr 2023]-Implemented Stripe Gateway in android studio
+                 [06 Apr 2023]-Implemented Forgot Password Activity
+                 [06 Apr 2023]-Created User Profile page
+                 [06 Apr 2023]-Created a sqlite database to store user address and phone number locally.
+                 [06 Apr 2023]-Created a page to show order has been placed.
 
 Jose Mario Reyes-[29 Jan 2023] All group members proposed an idea each to professor.
                  [16 Feb 2023] Created a login activity frame as a starting point, displaying the login and signup forms.
