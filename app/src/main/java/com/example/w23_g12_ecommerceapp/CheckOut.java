@@ -64,6 +64,8 @@ public class CheckOut extends AppCompatActivity {
     DBHelper dbHelper;
     FirebaseAuth mAuth;
 
+    String valueToPass;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,10 +156,12 @@ public class CheckOut extends AppCompatActivity {
         //getting the data of price from previous activity
         Bundle bundle = getIntent().getExtras();
         totalOrder = bundle.getDouble("TOTAL");
+        valueToPass = String.valueOf((int)Math.round(totalOrder));
 
         btnPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(CheckOut.this, totalOrder.toString(), Toast.LENGTH_SHORT).show();
                 getDetails();
 //                String addressTEXT = editText.getText().toString();
 //                Boolean save = dbHelper.saveUSerData("", "9090909090",addressTEXT);
@@ -185,7 +189,7 @@ public class CheckOut extends AppCompatActivity {
     }
 
     void getDetails(){
-        Fuel.INSTANCE.post("https://us-central1-csis3175-7b517.cloudfunctions.net/stripePayment?amt=1000"  ,null).responseString(new Handler<String>() {
+        Fuel.INSTANCE.post("https://us-central1-csis3175-7b517.cloudfunctions.net/stripePayment?amt=" + valueToPass  ,null).responseString(new Handler<String>() {
             @Override
             public void success(String s) {
                 try {
