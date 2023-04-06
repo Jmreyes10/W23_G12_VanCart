@@ -29,6 +29,8 @@ public class Login_App extends AppCompatActivity {
 
     TextView registerNow;
 
+    TextView forgotPass;
+
     @Override
     public void onStart() {
         super.onStart();
@@ -45,9 +47,9 @@ public class Login_App extends AppCompatActivity {
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_app);
-        editEmailText = findViewById(R.id.editEmailText);
+        editEmailText = findViewById(R.id.editForgotEmail);
         editPasswordText = findViewById(R.id.editPasswordText);
-        btnLogin = findViewById(R.id.btnLogin);
+        btnLogin = findViewById(R.id.btnResend);
         mAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar);
         registerNow = findViewById(R.id.registerNow);
@@ -102,11 +104,19 @@ public class Login_App extends AppCompatActivity {
                                     }
                                 }
                             });
-
                 }
 
 
 
+            }
+        });
+
+        forgotPass = findViewById(R.id.forgotPass);
+
+        forgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ForgotPass_App.class));
             }
         });
     }

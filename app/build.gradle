@@ -39,6 +39,17 @@ dependencies {
     // Google Maps
     implementation 'com.google.android.gms:play-services-maps:18.0.0'
 
+    //Stripe
+    implementation 'com.stripe:stripe-android:20.21.1'
+    implementation 'com.android.volley:volley:1.2.1'
+    implementation 'com.github.kittinunf.fuel:fuel:2.3.1'
+
+    //Gif implementation
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
+
+
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

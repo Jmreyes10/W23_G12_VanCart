@@ -47,7 +47,7 @@ public class Register_App extends AppCompatActivity {
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_app);
-        editEmailText = findViewById(R.id.editEmailText);
+        editEmailText = findViewById(R.id.editForgotEmail);
         editPasswordText = findViewById(R.id.editPasswordText);
         btnRegister = findViewById(R.id.btnRegister);
         mAuth = FirebaseAuth.getInstance();

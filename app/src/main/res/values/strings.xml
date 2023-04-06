@@ -24,7 +24,7 @@
     <string name="txtLogin">Existing user! Go to Login page</string>
     <string name="txtSignUp">Login</string>
     <string name="txtRegister">Register</string>
-    <string name="txtForgotPassword">Forgot Password</string>
+    <string name="txtForgotPassword">Forgot Password ?</string>
     <string name="btn_changePassword">Change Password</string>
     <string name="Change_password">Change Password</string>
 
@@ -74,5 +74,9 @@
     <string name="txtRatingQ3">Reliability</string>
     <string name="txtRatingQ4">Overal experience</string>
     <string name="txtRatingSubmit">Submit Ratings</string>
+    <string name="order_recieved">Thank You</string>
+    <string name="ontheway">Your order is on the way ;)</string>
+    <string name="gettohome">Get to Home</string>
+    <string name="sendPass">Reset Password</string>
 
 </resources>

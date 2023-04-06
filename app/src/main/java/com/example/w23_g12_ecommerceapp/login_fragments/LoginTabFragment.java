@@ -29,7 +29,7 @@ public class LoginTabFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_login_tab, container, false);
 
-        btnLogin = view.findViewById(R.id.btnLogin);
+        btnLogin = view.findViewById(R.id.btnResend);
 
 
         btnLogin.setOnClickListener((View v) -> {

@@ -28,6 +28,10 @@ public class ViewCart extends AppCompatActivity {
     private final double TAX_RATE = 0.10;
     private double shipping = 20.00;
 
+    private double total;
+
+    DBHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,12 +66,15 @@ public class ViewCart extends AppCompatActivity {
                     subTotal += productsInCart.get(i).getProdPrice() * prodQtty.get(i);
 
                 double tax = (subTotal + shipping) * TAX_RATE;
-                double total = (subTotal + shipping + tax);
+                total = (subTotal + shipping + tax);
 
                 tvSubTotalVal.setText("$" + roundTwoDecimals(subTotal));
                 tvShippingVal.setText("$" + roundTwoDecimals(shipping));
                 tvTaxesVal.setText("$" + roundTwoDecimals(tax));
                 tvTotalVal.setText("$" + roundTwoDecimals(total));
+
+
+
             }
         });
         rvProductsInCart.setAdapter(productCartAdapter);
@@ -83,6 +90,9 @@ public class ViewCart extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), CheckOut.class);
+                Bundle bundle = new Bundle();
+                bundle.putDouble("TOTAL", total);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });

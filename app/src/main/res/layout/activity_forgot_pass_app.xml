@@ -23,7 +23,7 @@
         android:gravity="center"
         android:padding="15dp"
         android:textColor="@color/quantum_grey800"
-        android:text="@string/login_txt"
+        android:text="@string/sendPass"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -39,18 +39,6 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editPasswordText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/password" />
-    </com.google.android.material.textfield.TextInputLayout>
-
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
@@ -61,30 +49,7 @@
         android:id="@+id/btnResend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_txt" />
-
-    <TextView
-        android:id="@+id/registerNow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="@string/notyet_reg"
-        android:textSize="20sp"
-        android:textColor="@color/quantum_grey800"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/forgotPass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="@string/txtForgotPassword"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        android:textColor="@color/quantum_grey500"/>
-
+        android:text="@string/sendPass" />
 
 
 

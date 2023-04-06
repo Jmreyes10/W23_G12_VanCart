@@ -5,12 +5,26 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.github.kittinunf.fuel.Fuel;
+import com.github.kittinunf.fuel.core.FuelError;
+import com.github.kittinunf.fuel.core.Handler;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.Places;
@@ -20,16 +34,35 @@ import com.google.android.libraries.places.api.model.TypeFilter;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.stripe.android.PaymentConfiguration;
+import com.stripe.android.paymentsheet.PaymentSheet;
+import com.stripe.android.paymentsheet.PaymentSheetResult;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class CheckOut extends AppCompatActivity {
     private PlacesClient placesClient;
     private AutocompleteSupportFragment autocompleteFragment;
+
+    private EditText editText;
     TextView textView,txtDistInfo;
+
+    Button btnPayment;
+    PaymentSheet paymentSheet;
+    String paymentIntentClientSecret;
+    PaymentSheet.CustomerConfiguration customerConfig;
+
+    Double totalOrder;
+    DBHelper dbHelper;
+    FirebaseAuth mAuth;
 
 
     @Override
@@ -113,5 +146,98 @@ public class CheckOut extends AppCompatActivity {
                 Log.e(TAG, "An error occurred: " + status);
             }
         });
+
+        btnPayment = findViewById(R.id.btnPayment);
+        paymentSheet = new PaymentSheet(this, this::onPaymentSheetResult);
+        mAuth = FirebaseAuth.getInstance();
+
+        //getting the data of price from previous activity
+        Bundle bundle = getIntent().getExtras();
+        totalOrder = bundle.getDouble("TOTAL");
+
+        btnPayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getDetails();
+//                String addressTEXT = editText.getText().toString();
+//                Boolean save = dbHelper.saveUSerData("", "9090909090",addressTEXT);
+//                if (TextUtils.isEmpty(addressTEXT)){
+//                    Toast.makeText(CheckOut.this, "Address cannot be empty", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                else {
+//                    if (save==true){
+//                        Toast.makeText(CheckOut.this, save.toString(), Toast.LENGTH_SHORT).show();
+//                        getDetails();
+//                    }else {
+//                        dbHelper.updateAddress(addressTEXT,mAuth.getCurrentUser().getEmail(),"604-123-9001", addressTEXT);
+//                        getDetails();
+//                        return;
+//                    }
+//                }
+            }
+        });
+
+        editText = findViewById(R.id.editTextTextPostalAddress);
+        dbHelper = new DBHelper(this);
+
+
     }
-}
+
+    void getDetails(){
+        Fuel.INSTANCE.post("https://us-central1-csis3175-7b517.cloudfunctions.net/stripePayment?amt=1000"  ,null).responseString(new Handler<String>() {
+            @Override
+            public void success(String s) {
+                try {
+                    JSONObject result = new JSONObject(s);
+                    customerConfig = new PaymentSheet.CustomerConfiguration(
+                            result.getString("customer"),
+                            result.getString("ephemeralKey")
+                    );
+                    paymentIntentClientSecret = result.getString("paymentIntent");
+                    PaymentConfiguration.init(getApplicationContext(), result.getString("publishableKey"));
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            showStripePmtSheet();
+                        }
+                    });
+
+                }catch (JSONException e){
+                    Toast.makeText(CheckOut.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void failure(@NonNull FuelError fuelError) {
+
+            }
+        });
+    }
+
+    void showStripePmtSheet(){
+
+        final PaymentSheet.Configuration configuration = new PaymentSheet.Configuration.Builder("VanCart.")
+                .customer(customerConfig)
+                .allowsDelayedPaymentMethods(true)
+                .build();
+        paymentSheet.presentWithPaymentIntent(
+                paymentIntentClientSecret,
+                configuration
+        );
+
+    }
+    void onPaymentSheetResult(final PaymentSheetResult paymentSheetResult){
+        if (paymentSheetResult instanceof PaymentSheetResult.Canceled) {
+            Toast.makeText(this, "Canceled", Toast.LENGTH_SHORT).show();
+        } else if (paymentSheetResult instanceof PaymentSheetResult.Failed) {
+            Toast.makeText(this, ((PaymentSheetResult.Failed) paymentSheetResult).getError().toString(), Toast.LENGTH_SHORT).show();
+        } else if (paymentSheetResult instanceof PaymentSheetResult.Completed) {
+            // Display for example, an order confirmation screen
+            startActivity(new Intent(this,ThankYou.class));
+            Toast.makeText(this, "Completed", Toast.LENGTH_SHORT).show();        }
+    }
+    }
+
+
