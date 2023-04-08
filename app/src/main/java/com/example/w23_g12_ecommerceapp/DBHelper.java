@@ -71,11 +71,13 @@ public static final String DBNAME = "App.db";
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
         MyDB.execSQL("create Table users(username TEXT primary key, fullname TEXT, password TEXT)");
+        MyDB.execSQL("create Table orders(order_id INTEGER primary key autoincrement, customer_name TEXT, customer_address TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase MyDB, int i, int i1) {
         MyDB.execSQL("drop Table if exists users");
+        MyDB.execSQL("drop Table if exists orders");
     }
 
     public Boolean insertData(String username,String fullname, String password ){
@@ -86,6 +88,18 @@ public static final String DBNAME = "App.db";
         contentValues.put("fullname", fullname);
         long result = MyDB.insert("users", null, contentValues);
         if(result==-1) return false;
+        else
+            return true;
+    }
+
+    public Boolean insertOrder(String customerName, String customerAddress) {
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("customer_name", customerName);
+        contentValues.put("customer_address", customerAddress);
+
+        long result = MyDB.insert("orders", null, contentValues);
+        if (result == -1) return false;
         else
             return true;
     }

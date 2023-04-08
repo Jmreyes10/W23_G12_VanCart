@@ -54,8 +54,9 @@ public class CheckOut extends AppCompatActivity {
 
     private EditText editText;
     TextView textView,txtDistInfo;
+    EditText fullname,phoneNumber;
 
-    Button btnPayment;
+    Button btnPayment,clicktosave;
     PaymentSheet paymentSheet;
     String paymentIntentClientSecret;
     PaymentSheet.CustomerConfiguration customerConfig;
@@ -65,6 +66,8 @@ public class CheckOut extends AppCompatActivity {
     FirebaseAuth mAuth;
 
     String valueToPass;
+    DBHelper DB;
+    String address,FullName;
 
 
     @Override
@@ -73,6 +76,12 @@ public class CheckOut extends AppCompatActivity {
         setContentView(R.layout.activity_check_out);
         //textView.setText("Search for your delivery location here");
         txtDistInfo=findViewById(R.id.txtDistInfo);
+        DB = new DBHelper(this);
+        phoneNumber=findViewById(R.id.phoneNumber);
+        fullname=findViewById(R.id.fullname);
+
+        clicktosave=findViewById(R.id.clicktosave);
+
 
 
         Places.initialize(getApplicationContext(),"AIzaSyDcxkAk1tO98SwdkKAnSNYMTUVCvoUfijI");
@@ -102,6 +111,7 @@ public class CheckOut extends AppCompatActivity {
 
                 // TODO: Get info about the selected place.
                 Log.e(TAG, "Place: " + place.getName() + ", " + place.getId());
+                address=place.getName().toString();
 
 
                 //LatLng selectedLocation = place.getLatLng();
@@ -157,11 +167,23 @@ public class CheckOut extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         totalOrder = bundle.getDouble("TOTAL");
         valueToPass = String.valueOf((int)Math.round(totalOrder));
+        clicktosave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FullName=fullname.getText().toString();
+                Boolean insertOrder = DB.insertOrder(FullName,address);
+                if(insertOrder){
+                    Toast.makeText(CheckOut.this, "order table created", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
 
         btnPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(CheckOut.this, totalOrder.toString(), Toast.LENGTH_SHORT).show();
+
                 getDetails();
 //                String addressTEXT = editText.getText().toString();
 //                Boolean save = dbHelper.saveUSerData("", "9090909090",addressTEXT);

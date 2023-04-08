@@ -13,6 +13,12 @@ public class Order {
         this.deliveryStatus = deliveryStatus;
     }
 
+    public Order(int id, String customerName, String customerAddress) {
+        this.id = id;
+        this.customerName = customerName;
+        this.customerAddress = customerAddress;
+    }
+
     public int getId() {
         return id;
     }

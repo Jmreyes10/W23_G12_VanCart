@@ -35,7 +35,7 @@ public class OrderAdapter extends ArrayAdapter<Order> {
             holder = new OrderHolder();
             holder.name = (TextView) convertView.findViewById(R.id.order_name);
             //holder.status=(TextView) convertView.findViewById(R.id.order_status);
-            holder.address=(TextView) convertView.findViewById(R.id.order_status);
+            //holder.address=(TextView) convertView.findViewById(R.id.order_status);
 
             convertView.setTag(holder);
         } else {
@@ -49,14 +49,14 @@ public class OrderAdapter extends ArrayAdapter<Order> {
         // Set the name of the customer in the TextView
         holder.name.setText(currentOrder.getCustomerName());
         //holder.status.setText(currentOrder.getDeliveryStatus());
-        holder.address.setText(currentOrder.getCustomerAddress());
-        Button deliveredButton = convertView.findViewById(R.id.order_delivered_button);
-        deliveredButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                deliveredButton.setText("Delivered\u2713");
-            }
-        });
+//        holder.address.setText(currentOrder.getCustomerAddress());
+//        Button deliveredButton = convertView.findViewById(R.id.order_delivered_button);
+//        deliveredButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                deliveredButton.setText("Delivered\u2713");
+//            }
+//        });
 
 
 

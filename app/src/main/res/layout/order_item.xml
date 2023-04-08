@@ -10,21 +10,21 @@
         android:layout_weight="0.5"
         android:padding="16dp"
         android:textSize="18sp" />
-    <TextView
-        android:id="@+id/order_status"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.5"
-        android:padding="16dp"
-        android:textSize="18sp" />
+<!--    <TextView-->
+<!--        android:id="@+id/order_status"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_weight="0.5"-->
+<!--        android:padding="16dp"-->
+<!--        android:textSize="18sp" />-->
 
-    <Button
-        android:id="@+id/order_delivered_button"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.5"
-        android:padding="16dp"
-        android:text="Deliver" />
+<!--    <Button-->
+<!--        android:id="@+id/order_delivered_button"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_weight="0.5"-->
+<!--        android:padding="16dp"-->
+<!--        android:text="Deliver" />-->
 
 
     <!--    <TextView-->

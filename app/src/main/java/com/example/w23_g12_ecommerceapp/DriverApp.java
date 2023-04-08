@@ -18,10 +18,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
 public class DriverApp extends AppCompatActivity {
 
 
     Button deliveredButton;
+    DBHelper DB;
     private ListView orderListView;
     private OrderAdapter orderAdapter;
     private List<Order> orderList=new ArrayList<Order>();
@@ -38,29 +40,30 @@ public class DriverApp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_app);
+        DB = new DBHelper(this);
 
         orderListView = (ListView) findViewById(R.id.order_list);
 
         // Initialize the order list
 
 
-        LoadModelData();
+        //LoadModelData();
         Log.d("AUDDEMO",orderList.size() + " Orders ");
 
         // Populate the order list from the SQLite database
-//        SQLiteDatabase db = getReadableDatabase();
-//        Cursor cursor = db.rawQuery("SELECT * FROM orders", null);
-//
-//        if (cursor.moveToFirst()) {
-//            do {
-//                int id = cursor.getInt(cursor.getColumnIndex("id"));
-//                String name = cursor.getString(cursor.getColumnIndex("customer_name"));
-//                String address = cursor.getString(cursor.getColumnIndex("customer_address"));
-//                int status = cursor.getInt(cursor.getColumnIndex("delivery_status"));
-//                Order order = new Order(id, name, address, status);
-//                orderList.add(order);
-//            } while (cursor.moveToNext());
-//        }
+        SQLiteDatabase db = this.DB.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM orders", null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("order_id"));
+                @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex("customer_name"));
+                @SuppressLint("Range") String address = cursor.getString(cursor.getColumnIndex("customer_address"));
+                //int status = cursor.getInt(cursor.getColumnIndex("delivery_status"));
+                Order order = new Order(id, name, address);
+                orderList.add(order);
+            } while (cursor.moveToNext());
+        }
 
         // Initialize the order adapter and set it to the list view
         orderAdapter = new OrderAdapter(this, R.layout.order_item, orderList);
