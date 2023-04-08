@@ -34,19 +34,19 @@ public class Feature06Activity extends AppCompatActivity {
         phoneProfile = findViewById(R.id.user_phone);
 
         dbHelper = new DBHelper(this);
-        Cursor cursor = dbHelper.getText();
-        if (cursor.getCount()==0){
-            Toast.makeText(this, "User details don't exist", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        StringBuffer buffer = new StringBuffer();
-
-        while (cursor.moveToNext()){
-            username = cursor.getString(0);
-            phone = cursor.getString(1);
-            address = cursor.getString(2);
-        }
+//        Cursor cursor = dbHelper.getText();
+//        if (cursor.getCount()==0){
+//            Toast.makeText(this, "User details don't exist", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//
+//        StringBuffer buffer = new StringBuffer();
+//
+//        while (cursor.moveToNext()){
+//            username = cursor.getString(0);
+//            phone = cursor.getString(1);
+//            address = cursor.getString(2);
+//        }
 
         usernameProfile.setText("Hi, "+ username);
         addressProfile.setText(address);
