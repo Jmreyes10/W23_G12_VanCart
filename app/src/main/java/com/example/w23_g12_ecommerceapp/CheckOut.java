@@ -145,14 +145,19 @@ public class CheckOut extends AppCompatActivity {
                 float distanceInKm = distanceInMeters / 1000;
                 distanceInKm+=0.6;
 
-                Float Time=distanceInKm*2;
+                double hr,min;
+
+                Float Time=distanceInKm*3;
                 Time+=60;
+                hr=Time/60;
+                min=Time%60;
+
 
                 // Display the distance in a Toast message
                 Toast.makeText(CheckOut.this, "Distance and Time Calculated", Toast.LENGTH_SHORT).show();
 
                 textView=findViewById(R.id.txtView);
-                txtDistInfo.setText("Distance: " + String.format("%.2f", distanceInKm) + " km" + "\nAt your door step in:"+ String.format("%.2f", Time) + "mins");
+                txtDistInfo.setText("Distance: " + String.format("%.2f", distanceInKm) + " km" + "\nOrder will reach your door step in: "+String.format("%.0f", hr-1)+" hours " + String.format("%.0f", min)+ " mins");
             }
 
 

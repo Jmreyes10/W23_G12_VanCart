@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.room.Room;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -41,6 +42,8 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
 
     private FirebaseUser user;
     private FirebaseAuth auth;
+
+    ProductDatabase productDatabase;
 //    private ListView drawerList;
 //    private ActionBarDrawerToggle drawerToggle;
 //
@@ -90,7 +93,13 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
 
         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
 
+        productDatabase = Room.databaseBuilder(
+                getApplicationContext(),
+                ProductDatabase.class,
+                "products_db"
+        ).allowMainThreadQueries().build();
 
+        productDatabase.productDao().deleteAll();
 //        txtViewUsername=findViewById(R.id.txtViewUsername);
 //
 //        DB = new DBHelper(this);

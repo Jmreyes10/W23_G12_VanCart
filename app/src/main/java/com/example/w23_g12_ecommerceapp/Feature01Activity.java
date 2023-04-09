@@ -77,7 +77,10 @@ public class Feature01Activity extends AppCompatActivity {
         btnViewCart.setOnClickListener((View v)-> {
             productDatabase.productDao().insert(productsInCart);
             int rowCount = productDatabase.productDao().getRowCount();
-            startActivity(new Intent(Feature01Activity.this, ViewCart.class));
+            if(rowCount==0)
+                Toast.makeText(this,"You have to add at least one product!",Toast.LENGTH_SHORT).show();
+            else
+                startActivity(new Intent(Feature01Activity.this, ViewCart.class));
         });
     }
 
