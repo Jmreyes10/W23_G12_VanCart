@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,6 +25,7 @@ public class DriverApp extends AppCompatActivity {
 
     Button deliveredButton;
     DBHelper DB;
+    TextView customerStatusTextView;
     private ListView orderListView;
     private OrderAdapter orderAdapter;
     private List<Order> orderList=new ArrayList<Order>();
@@ -41,6 +43,7 @@ public class DriverApp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_app);
         DB = new DBHelper(this);
+        //customerAddressTextView=findViewById(R.id.customerAddressTextView);
 
         orderListView = (ListView) findViewById(R.id.order_list);
 
@@ -59,8 +62,9 @@ public class DriverApp extends AppCompatActivity {
                 @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("order_id"));
                 @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex("customer_name"));
                 @SuppressLint("Range") String address = cursor.getString(cursor.getColumnIndex("customer_address"));
+                @SuppressLint("Range") String phone = cursor.getString(cursor.getColumnIndex("customer_Phone"));
                 //int status = cursor.getInt(cursor.getColumnIndex("delivery_status"));
-                Order order = new Order(id, name, address);
+                Order order = new Order(id, name, address,phone,"not delivered");
                 orderList.add(order);
             } while (cursor.moveToNext());
         }
@@ -83,6 +87,10 @@ public class DriverApp extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Get the selected order
                 Order order = orderList.get(position);
+                order.setDeliveryStatus("delivered");
+
+
+                //customerStatusTextView.setText("delivered");
 
                 // Launch the Google Maps app and show the customer's address
                 Uri gmmIntentUri = Uri.parse("google.navigation:q=" + order.getCustomerAddress());
@@ -93,14 +101,14 @@ public class DriverApp extends AppCompatActivity {
         });
     }
 
-    private void LoadModelData() {
-        for (int i = 0; i < OrderId.size(); i++){
-            Order order = new Order(OrderId.get(i), OrderNames.get(i), OrderAddress.get(i), OrderStatus.get(i));
-            //Song eachSong = new Song(SongNames.get(i),SongPics.get(i),SongRaws.get(i));
-            orderList.add(order);
-            //SongList.add(eachSong);
-        }
-    }
+//    private void LoadModelData() {
+//        for (int i = 0; i < OrderId.size(); i++){
+//            //Order order = new Order(OrderId.get(i), OrderNames.get(i), OrderAddress.get(i), OrderStatus.get(i));
+//            //Song eachSong = new Song(SongNames.get(i),SongPics.get(i),SongRaws.get(i));
+//            orderList.add(order);
+//            //SongList.add(eachSong);
+//        }
+//    }
 
 //    private SQLiteDatabase getReadableDatabase() {
 //        // TODO: Implement SQLite database

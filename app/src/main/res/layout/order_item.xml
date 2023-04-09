@@ -5,26 +5,46 @@
 
     <TextView
         android:id="@+id/order_name"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="0.5"
         android:padding="16dp"
         android:textSize="18sp" />
-<!--    <TextView-->
-<!--        android:id="@+id/order_status"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_weight="0.5"-->
-<!--        android:padding="16dp"-->
-<!--        android:textSize="18sp" />-->
+
+    <TextView
+        android:id="@+id/order_customer_number"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:enabled="false"
+        android:text=""
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/order_customer_status"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:enabled="false"
+        android:text=""
+        android:textSize="18sp" />
 
 <!--    <Button-->
 <!--        android:id="@+id/order_delivered_button"-->
-<!--        android:layout_width="0dp"-->
+<!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="match_parent"-->
-<!--        android:layout_weight="0.5"-->
-<!--        android:padding="16dp"-->
 <!--        android:text="Deliver" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/order_status"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_weight="0.5"-->
+    <!--        android:padding="16dp"-->
+    <!--        android:textSize="18sp" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/order_delivered_button"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_weight="0.5"-->
+    <!--        android:padding="16dp"-->
+    <!--        android:text="Deliver" />-->
 
 
     <!--    <TextView-->

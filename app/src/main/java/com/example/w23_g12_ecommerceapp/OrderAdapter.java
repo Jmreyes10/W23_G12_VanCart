@@ -26,28 +26,53 @@ public class OrderAdapter extends ArrayAdapter<Order> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        OrderHolder holder;
+//        OrderHolder holder;
 
         if (convertView == null) {
+
+
+//            TextView customerAddressTextView = convertView.findViewById(R.id.order_customer_address);
+//            customerAddressTextView.setText(order.getCustomerAddress());
+
+//            Button deliveredButton = convertView.findViewById(R.id.order_delivered_button);
+//            deliveredButton.setText(order.getDeliveryStatus());
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
             convertView = inflater.inflate(layoutResourceId, parent, false);
 
-            holder = new OrderHolder();
-            holder.name = (TextView) convertView.findViewById(R.id.order_name);
-            //holder.status=(TextView) convertView.findViewById(R.id.order_status);
-            //holder.address=(TextView) convertView.findViewById(R.id.order_status);
-
-            convertView.setTag(holder);
-        } else {
-            holder = (OrderHolder) convertView.getTag();
+//            holder = new OrderHolder();
+//            holder.name = (TextView) convertView.findViewById(R.id.order_name);
+//            //holder.status=(TextView) convertView.findViewById(R.id.order_status);
+//            //holder.address=(TextView) convertView.findViewById(R.id.order_status);
+//
+//            convertView.setTag(holder);
         }
 
+        Order order = getItem(position);
+        TextView customerNameTextView = convertView.findViewById(R.id.order_name);
+        customerNameTextView.setText("Drive to "+order.getCustomerName());
+
+
+
+        TextView customerAddressTextView = convertView.findViewById(R.id.order_customer_number);
+        customerAddressTextView.setText("Call "+order.getCustumerNumber());
+
+        TextView customerStatusTextView = convertView.findViewById(R.id.order_customer_status);
+        customerStatusTextView.setText(order.getDeliveryStatus());
+        notifyDataSetChanged();
+//
+//        Button deliveredButton = convertView.findViewById(R.id.order_delivered_button);
+//        deliveredButton.setText(order.getDeliveryStatus());
+
+//        } else {
+//            holder = (OrderHolder) convertView.getTag();
+//        }
+
         // Get the order at this position
-        Order currentOrder = data.get(position);
+        //Order currentOrder = data.get(position);
 
 
         // Set the name of the customer in the TextView
-        holder.name.setText(currentOrder.getCustomerName());
+        //holder.name.setText(currentOrder.getCustomerName());
         //holder.status.setText(currentOrder.getDeliveryStatus());
 //        holder.address.setText(currentOrder.getCustomerAddress());
 //        Button deliveredButton = convertView.findViewById(R.id.order_delivered_button);

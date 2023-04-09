@@ -4,8 +4,11 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.location.Location;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -67,7 +70,7 @@ public class CheckOut extends AppCompatActivity {
 
     String valueToPass;
     DBHelper DB;
-    String address,FullName;
+    String address,FullName,phonumber;
 
 
     @Override
@@ -81,6 +84,7 @@ public class CheckOut extends AppCompatActivity {
         fullname=findViewById(R.id.fullname);
 
         clicktosave=findViewById(R.id.clicktosave);
+
 
 
 
@@ -148,7 +152,7 @@ public class CheckOut extends AppCompatActivity {
                 Toast.makeText(CheckOut.this, "Distance and Time Calculated", Toast.LENGTH_SHORT).show();
 
                 textView=findViewById(R.id.txtView);
-                txtDistInfo.setText("Distance: " + String.format("%.2f", distanceInKm) + " km" + "\nEstimated time of Arrival:"+ String.format("%.2f", Time) + "mins");
+                txtDistInfo.setText("Distance: " + String.format("%.2f", distanceInKm) + " km" + "\nAt your door step in:"+ String.format("%.2f", Time) + "mins");
             }
 
 
@@ -167,11 +171,20 @@ public class CheckOut extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         totalOrder = bundle.getDouble("TOTAL");
         valueToPass = String.valueOf((int)Math.round(totalOrder));
+        btnPayment.setVisibility(View.INVISIBLE);
+
+
         clicktosave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                phonumber=phoneNumber.getText().toString();
+                clicktosave.setText("Comfirmed\u2713");
+                clicktosave.setBackgroundColor(Color.BLUE);
+
+                btnPayment.setVisibility(View.VISIBLE);
+
                 FullName=fullname.getText().toString();
-                Boolean insertOrder = DB.insertOrder(FullName,address);
+                Boolean insertOrder = DB.insertOrder(FullName,address,phonumber);
                 if(insertOrder){
                     Toast.makeText(CheckOut.this, "order table created", Toast.LENGTH_SHORT).show();
                 }
