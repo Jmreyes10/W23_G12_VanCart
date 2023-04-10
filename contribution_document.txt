@@ -1,20 +1,31 @@
-Harkirat Singh - [29 Jan 2023] All group members proposed an idea each to professor.
-                 [7 Feb 2023] Emailed professor the basic idea of app and the proposed extensions to integrate with the application.
-                 [17 Feb 2023] Created contributions file.
-                 [21 Mar 2023] Added the Image slider on home.
-                 [21 Mar 2023] Created the logo and included that in login page.
-                 [21 Mar 2023] Created the login/register page and included them in launcher activity with proper logic.
-                 [21 Mar 2023] Created the signout button and added that to nav slider.
-                 [22 Mar 2023] Created the splash screen with MotionLayout and implemented the logo with it.
-                 [22 Mar 2023] Customized and created a material looking nav slider with icons and colors implemented.
-                 [22 Mar 2023] Implemented the sign out button in nav slider and set gradient for actionbar.
-                 [06 Apr 2023]Added Stripe Payment Gateway
+Harkirat Singh - [29 Jan 2023]-All group members proposed an idea each to professor.
+                 [7 Feb 2023]-Emailed professor the basic idea of app and the proposed extensions to integrate with the application.
+                 [17 Feb 2023]-Created contributions file.
+                 [21 Mar 2023]-Added the Image slider on home.
+                 [21 Mar 2023]-Created the logo and included that in login page.
+                 [21 Mar 2023]-Created the login/register page and included them in launcher activity with proper logic.
+                 [21 Mar 2023]-Created the signout button and added that to nav slider.
+                 [22 Mar 2023]-Created the splash screen with MotionLayout and implemented the logo with it.
+                 [22 Mar 2023]-Customized and created a material looking nav slider with icons and colors implemented.
+                 [22 Mar 2023]-Implemented the sign out button in nav slider and set gradient for actionbar.
+                 [06 Apr 2023]-Added Stripe Payment Gateway
                  [06 Apr 2023]-Created a server side with Node.js and hosted it on FireBase
                  [06 Apr 2023]-Implemented Stripe Gateway in android studio
                  [06 Apr 2023]-Implemented Forgot Password Activity
                  [06 Apr 2023]-Created User Profile page
                  [06 Apr 2023]-Created a sqlite database to store user address and phone number locally.
-                 [06 Apr 2023]-Created a page to show order has been placed.
+                 [06 Apr 2023]-Created a thank You page to show order has been placed.
+                 [10 Apr 2023]-Created Order History Database using SQLite
+                 [10 Apr 2023]-Implemented order history in activity using recycler view.
+                 [10 Apr 2023]-Created User table and Model using SQLite
+                 [10 Apr 2023]-Implemented username, email, address in activity.
+                 [10 Apr 2023]-Allowed users to perform Update actions on their information from activity.
+                 [10 Apr 2023]-Added animations to home page using lottie + reformed some UI for home page.
+                 [10 Apr 2023]-Set Icons and data for navigation slider
+                 [10 Apr 2023]-Created new images for banner at home and linked them
+                 [10 Apr 2023]-Tried using LiveData for order history and user but after a lot of trying was not able to do it.
+                 [10 Apr 2023]-Added validation in Signup, Profile, Login, Forget Activities for email. 
+                 [10 Apr 2023]-Added hide/show password in signup and login. 
 
 Jose Mario Reyes-[29 Jan 2023] All group members proposed an idea each to professor.
                  [16 Feb 2023] Created a login activity frame as a starting point, displaying the login and signup forms.
