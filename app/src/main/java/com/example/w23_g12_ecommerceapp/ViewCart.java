@@ -1,12 +1,15 @@
 package com.example.w23_g12_ecommerceapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +20,7 @@ import com.example.w23_g12_ecommerceapp.dao.ProductDatabase;
 import com.github.kittinunf.fuel.Fuel;
 import com.github.kittinunf.fuel.core.FuelError;
 import com.github.kittinunf.fuel.core.Handler;
+import com.google.firebase.auth.FirebaseAuth;
 import com.stripe.android.PaymentConfiguration;
 import com.stripe.android.paymentsheet.PaymentSheet;
 import com.stripe.android.paymentsheet.PaymentSheetResult;
@@ -46,10 +50,9 @@ public class ViewCart extends AppCompatActivity {
     PaymentSheet.CustomerConfiguration customerConfig;
 
     String valueToPass;
+    AlertDialog.Builder builder;
 
-
-    DBHelper dbHelper;
-
+    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -172,13 +175,44 @@ public class ViewCart extends AppCompatActivity {
             Toast.makeText(this, ((PaymentSheetResult.Failed) paymentSheetResult).getError().toString(), Toast.LENGTH_SHORT).show();
         } else if (paymentSheetResult instanceof PaymentSheetResult.Completed) {
             // Display for example, an order confirmation screen
-            startActivity(new Intent(this,ThankYou.class));
             for (int i=0; i < productsInCart.size(); i++) {
                 OrderHistoryDBHelper historyDBHelper = new OrderHistoryDBHelper(ViewCart.this);
                 OrderModel orderModel = new OrderModel(productsInCart.get(i).getProdName(), prodQtty.get(i).toString(), String.valueOf(productsInCart.get(i).getProdPrice()));
                 historyDBHelper.addOrder(orderModel);
             }
-            Toast.makeText(this, "Completed", Toast.LENGTH_SHORT).show();        }
+            UserDBHelper userDBHelper = new UserDBHelper(this);
+            List<UserModel> userModels = userDBHelper.getUser();
+            auth = FirebaseAuth.getInstance();
+            String userEmail = auth.getCurrentUser().getEmail();
+            int id = GetId(userEmail);
+            String uAddress = userModels.get(id - 1).userAddress;
+
+            builder = new AlertDialog.Builder(this);
+            builder.setTitle("Alert").setMessage("Your order will be delivered at "+ uAddress).setCancelable(true)
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.cancel();
+                                    Toast.makeText(getApplicationContext(), "Completed", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getApplicationContext(),ThankYou.class));
+                                }
+                            }).setNegativeButton("No, change address", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(getApplicationContext(), Feature06Activity.class));
+                        }
+                    }).show();
+           }
+    }
+
+    private int GetId(String userEmail) {
+        UserDBHelper userDBHelper = new UserDBHelper(this);
+        Cursor cursor = userDBHelper.getReadableDatabase().rawQuery("SELECT id FROM USERS WHERE userEmail=?", new String[]{userEmail});
+        int num = -1;
+        if (cursor.moveToFirst()) num = cursor.getInt(0);
+        cursor.close();
+        userDBHelper.close();
+        return num;
     }
 
 }
