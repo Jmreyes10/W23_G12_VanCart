@@ -46,6 +46,7 @@ public class Order {
 
     public String setDeliveryStatus(String status) {
         return deliveryStatus = status;
+
     }
 
     public String getCustumerNumber() {

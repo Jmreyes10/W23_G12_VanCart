@@ -147,7 +147,7 @@ public class CheckOut extends AppCompatActivity {
 
                 double hr,min;
 
-                Float Time=distanceInKm*3;
+                double Time=distanceInKm*3;
                 Time+=60;
                 hr=Time/60;
                 min=Time%60;
@@ -157,7 +157,7 @@ public class CheckOut extends AppCompatActivity {
                 Toast.makeText(CheckOut.this, "Distance and Time Calculated", Toast.LENGTH_SHORT).show();
 
                 textView=findViewById(R.id.txtView);
-                txtDistInfo.setText("Distance: " + String.format("%.2f", distanceInKm) + " km" + "\nOrder will reach your door step in: "+String.format("%.0f", hr-1)+" hours " + String.format("%.0f", min)+ " mins");
+                txtDistInfo.setText("Distance: " + String.format("%.2f", distanceInKm) + " km" + "\nOrder will reach your door step in: "+String.format("%.0f", hr)+" hours " + String.format("%.0f", min)+ " mins");
             }
 
 
@@ -191,7 +191,7 @@ public class CheckOut extends AppCompatActivity {
                 FullName=fullname.getText().toString();
                 Boolean insertOrder = DB.insertOrder(FullName,address,phonumber);
                 if(insertOrder){
-                    Toast.makeText(CheckOut.this, "order table created", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CheckOut.this, "confirmed", Toast.LENGTH_SHORT).show();
                 }
             }
         });

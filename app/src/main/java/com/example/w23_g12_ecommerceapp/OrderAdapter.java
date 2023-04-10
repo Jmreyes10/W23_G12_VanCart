@@ -2,6 +2,7 @@ package com.example.w23_g12_ecommerceapp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,11 +55,13 @@ public class OrderAdapter extends ArrayAdapter<Order> {
 
 
         TextView customerAddressTextView = convertView.findViewById(R.id.order_customer_number);
+
         customerAddressTextView.setText("Call "+order.getCustumerNumber());
 
         TextView customerStatusTextView = convertView.findViewById(R.id.order_customer_status);
+        customerStatusTextView.setTextColor(Color.RED);
         customerStatusTextView.setText(order.getDeliveryStatus());
-        notifyDataSetChanged();
+        //notifyDataSetChanged();
 //
 //        Button deliveredButton = convertView.findViewById(R.id.order_delivered_button);
 //        deliveredButton.setText(order.getDeliveryStatus());

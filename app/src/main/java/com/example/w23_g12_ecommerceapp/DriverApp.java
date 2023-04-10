@@ -3,9 +3,11 @@ package com.example.w23_g12_ecommerceapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,6 +50,7 @@ public class DriverApp extends AppCompatActivity {
 
         orderListView = (ListView) findViewById(R.id.order_list);
 
+        //customerStatusTextView=findViewById(R.id.order_customer_status);
         // Initialize the order list
 
 
@@ -81,22 +85,55 @@ public class DriverApp extends AppCompatActivity {
 //            }
 //        });
 
+
         // Set a click listener on the list view items
         orderListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Get the selected order
                 Order order = orderList.get(position);
+
                 order.setDeliveryStatus("delivered");
+                //order.notify();
+                customerStatusTextView=view.findViewById(R.id.order_customer_status);
+                customerStatusTextView.setTextColor(Color.BLUE);
 
 
-                //customerStatusTextView.setText("delivered");
 
-                // Launch the Google Maps app and show the customer's address
-                Uri gmmIntentUri = Uri.parse("google.navigation:q=" + order.getCustomerAddress());
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                mapIntent.setPackage("com.google.android.apps.maps");
-                startActivity(mapIntent);
+                if(customerStatusTextView.getText().toString().equals("delivered")){
+                    Toast.makeText(DriverApp.this, "Item already delivered", Toast.LENGTH_SHORT).show();
+                }else{
+                    // Launch the Google Maps app and show the customer's address
+                    Uri gmmIntentUri = Uri.parse("google.navigation:q=" + order.getCustomerAddress());
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                    mapIntent.setPackage("com.google.android.apps.maps");
+                    startActivity(mapIntent);
+
+                    // Retrieve the data from the SQLite database using a SELECT statement
+                    SQLiteDatabase db = DB.getWritableDatabase();
+                    Cursor cursor = db.rawQuery("SELECT * FROM " + "orders" + " WHERE " + "delivery_Status" + "=?", new String[]{"not delivered"});
+
+                    //Modify the column value of the row you want to update
+                    if (cursor.moveToFirst()) {
+                        @SuppressLint("Range") String idd = cursor.getString(cursor.getColumnIndex("order_id"));
+                        ContentValues contentValues1 = new ContentValues();
+                        contentValues1.put("delivery_Status", "Delivered");
+
+                        // Use an UPDATE statement to update the SQLite database with the modified data
+                        db.update("orders", contentValues1, "order_id=" + idd, null);
+                        Toast.makeText(getApplicationContext(), "return back only once delivered", Toast.LENGTH_SHORT).show();
+                    } else {
+                        //Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                    }
+                    customerStatusTextView.setText("delivered");
+
+
+                    // Close the database connection and the cursor
+                    cursor.close();
+                    db.close();
+
+                }
+
             }
         });
     }

@@ -17,6 +17,7 @@
         android:enabled="false"
         android:text=""
         android:textSize="18sp" />
+
     <TextView
         android:id="@+id/order_customer_status"
         android:layout_width="wrap_content"
