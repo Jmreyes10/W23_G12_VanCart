@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -86,24 +87,26 @@ public class Login_App extends AppCompatActivity {
                     startActivity(intent);
                 }else{
 
-                    mAuth.signInWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    progressBar.setVisibility(View.GONE);
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(Login_App.this, "Login successful.",
-                                                Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
-                                        // If sign in fails, display a message to the user.
-                                        Toast.makeText(Login_App.this, "Authentication failed.",
-                                                Toast.LENGTH_SHORT).show();
+                    if (isValidEmail(email)) {
+                        mAuth.signInWithEmailAndPassword(email, password)
+                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        progressBar.setVisibility(View.GONE);
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(Login_App.this, "Login successful.",
+                                                    Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        } else {
+                                            // If sign in fails, display a message to the user.
+                                            Toast.makeText(Login_App.this, "Authentication failed.",
+                                                    Toast.LENGTH_SHORT).show();
+                                        }
                                     }
-                                }
-                            });
+                                });
+                    }
                 }
 
 
@@ -119,5 +122,14 @@ public class Login_App extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), ForgotPass_App.class));
             }
         });
+    }
+    public boolean isValidEmail(String emailInput) {
+
+        if (!emailInput.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()){
+            return true;
+        }else {
+            Toast.makeText(this, "Please enter a valid email", Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 }

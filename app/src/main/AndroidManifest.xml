@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -17,6 +19,12 @@
         android:theme="@style/Theme.W23_G12_eCommerceApp"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".Feature07"
+            android:exported="false" />
+        <activity
+            android:name=".Feature07Activity"
+            android:exported="false" />
         <activity
             android:name=".ForgotPass_App"
             android:exported="false" />
@@ -147,6 +155,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".Feature01Activity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
 
@@ -180,6 +195,11 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <provider
+            android:name=".database.OrderContentProvider"
+            android:authorities="com.example.w23_g12_ecommerceapp"
+            android:exported="true" />
     </application>
 
 </manifest>

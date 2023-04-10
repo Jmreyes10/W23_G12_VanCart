@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -21,7 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Register_App extends AppCompatActivity {
 
-    TextInputEditText editEmailText, editPasswordText,editFullName;
+    TextInputEditText editEmailText, editPasswordText,editFullName, editAddress;
     Button btnRegister;
 
     FirebaseAuth mAuth;
@@ -51,11 +52,12 @@ public class Register_App extends AppCompatActivity {
         editFullName=findViewById(R.id.editFullName);
         editEmailText = findViewById(R.id.editForgotEmail);
         editPasswordText = findViewById(R.id.editPasswordText);
+        editAddress = findViewById(R.id.editAddress);
+
         btnRegister = findViewById(R.id.btnRegister);
         mAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar);
         loginNow = findViewById(R.id.loginNow);
-        DB = new DBHelper(this);
         loginNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,11 +71,13 @@ public class Register_App extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                String email, password,fullname;
+                String email, password,fullname,address;
 
                 email = editEmailText.getText().toString();
                 password = editPasswordText.getText().toString();
                 fullname = editFullName.getText().toString();
+                address = editAddress.getText().toString();
+
 
 
                 if (TextUtils.isEmpty(fullname)) {
@@ -91,43 +95,46 @@ public class Register_App extends AppCompatActivity {
                     return;
                 }
 
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
-                                if (task.isSuccessful()) {
-                                    Boolean checkuser = DB.checkusername(email);
-                                    if(checkuser==false){
-                                        Boolean insert = DB.insertData(email, fullname, password);
-                                        if(insert==true){
-                                            Toast.makeText(Register_App.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(getApplicationContext(),MenuActivity.class);
-                                            startActivity(intent);
-                                        }else{
-                                            Toast.makeText(Register_App.this, "Registration failed", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                    else{
-                                        Toast.makeText(Register_App.this, "User already exists! please sign in", Toast.LENGTH_SHORT).show();
-                                    }
+                if (TextUtils.isEmpty(address)) {
+                    Toast.makeText(Register_App.this, "Address cannot be empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-                                    Toast.makeText(Register_App.this, "Account created successfully..",
-                                            Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), Login_App.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(Register_App.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                    String s = "Sign up Failed" + task.getException();
-                                    Toast.makeText(Register_App.this, s,
-                                            Toast.LENGTH_SHORT).show();
+                if (isValidEmail(email)) {
+                    mAuth.createUserWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    progressBar.setVisibility(View.GONE);
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(Register_App.this, "Account created successfully..",
+                                                Toast.LENGTH_SHORT).show();
+                                        UserDBHelper userDBHelper = new UserDBHelper(Register_App.this);
+                                        UserModel userModel = new UserModel(fullname, email, address);
+                                        userDBHelper.addUser(userModel);
+                                        Intent intent = new Intent(getApplicationContext(), Login_App.class);
+                                        startActivity(intent);
+                                        finish();
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+                                        Toast.makeText(Register_App.this, "Authentication failed.",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
+
+                }
             }
         });
+    }
+
+    public boolean isValidEmail(String emailInput) {
+
+        if (!emailInput.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()){
+            return true;
+        }else {
+            Toast.makeText(this, "Please enter a valid email", Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 }

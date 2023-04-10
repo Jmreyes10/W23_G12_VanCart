@@ -5,11 +5,11 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.MenuItem;
-
 import android.view.View;
 import mehdi.sakout.aboutpage.AboutPage;
 import mehdi.sakout.aboutpage.Element;
+
+import android.view.MenuItem;
 
 public class Feature04Activity extends AppCompatActivity {
 
@@ -34,9 +34,7 @@ public class Feature04Activity extends AppCompatActivity {
                 .addItem(adsElement)
                 .create();
 
-        setContentView(aboutPage);
-
-    }
+        setContentView(aboutPage);    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

@@ -1,5 +1,6 @@
 package com.example.w23_g12_ecommerceapp.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -15,6 +16,9 @@ public interface ProductDao {
 
     @Query("SELECT * FROM products")
     List<Product> getAll();
+
+    @Query("SELECT * FROM products")
+    LiveData<List<Product>> getAllOrders();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(List<Product> products);

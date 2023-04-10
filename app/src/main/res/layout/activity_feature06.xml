@@ -30,13 +30,31 @@
         app:srcCompat="@drawable/image_man" />
 
     <TextView
-        android:id="@+id/username_profile"
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="@string/hi"
+        android:textColor="#191818"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_userName"
+        app:layout_constraintEnd_toStartOf="@+id/edit_userName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/edit_userName"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/edit_userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
+        android:ems="6"
         android:fontFamily="@font/roboto_black"
+        android:inputType="textPersonName"
         android:shadowColor="#000000"
-        android:text="Username"
+        android:background="@null"
+        android:text="Name"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -45,34 +63,45 @@
         app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
-    <TextView
-        android:id="@+id/user_address"
-        android:layout_width="wrap_content"
+
+
+    <EditText
+        android:id="@+id/edit_userEmail"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="TextView"
-        android:textColor="@color/quantum_grey800"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/edit_userAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        android:hint="Email"/>
+
+    <EditText
+        android:id="@+id/edit_userAdd"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Address"
+        android:inputType="textPostalAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.23000002" />
 
-    <TextView
-        android:id="@+id/user_phone"
+    <Button
+        android:id="@+id/btnUpdateInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="TextView"
+        android:text="@string/btnUpdateInfo"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:textColor="@color/quantum_grey800"
-        android:textStyle="bold"
-        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_address"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_userAdd" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

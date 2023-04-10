@@ -52,12 +52,24 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Address" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editPasswordText"
             android:hint="@string/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
-    
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
@@ -69,15 +81,15 @@
         android:text="@string/register_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-    
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/loginNow"
-        android:text="@string/already_reg"
-        android:textStyle="bold"
-        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:layout_marginTop="20dp"/>
+        android:text="@string/already_reg"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

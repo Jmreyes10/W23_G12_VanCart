@@ -78,5 +78,8 @@
     <string name="ontheway">Your order is on the way ;)</string>
     <string name="gettohome">Get to Home</string>
     <string name="sendPass">Reset Password</string>
+    <string name="btnUpdateInfo">Update</string>
+    <string name="hi">"Hi, "</string>
+    <string name="start">Start your journey from navigation menu</string>
 
 </resources>

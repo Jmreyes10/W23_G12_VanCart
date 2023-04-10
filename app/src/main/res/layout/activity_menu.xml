@@ -15,25 +15,53 @@
         android:layout_height="match_parent">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            app:cardBackgroundColor = "@color/purple_500"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"
-            app:cardElevation="20dp"
-            app:cardCornerRadius="20dp">
+            app:cardBackgroundColor="@color/purple_500"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="20dp">
 
             <com.denzcoskun.imageslider.ImageSlider
-                android:layout_height="200dp"
-                android:layout_width="match_parent"
                 android:id="@+id/imageSlider"
-                app:iss_period="1000"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
                 app:iss_auto_cycle="true"
-                app:iss_delay="1000"
                 app:iss_corner_radius="20"
-                app:iss_title_background="@color/purple_500"/>
+                app:iss_delay="1000"
+                app:iss_period="1000"
+                app:iss_title_background="@color/purple_500" />
+
+
         </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="#171616"
+            android:fontFamily="@font/playfair_display"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="@string/start" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationViews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="350dp"
+            android:layout_marginEnd="64dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/data2" />
+
     </RelativeLayout>
     
     <com.google.android.material.navigation.NavigationView

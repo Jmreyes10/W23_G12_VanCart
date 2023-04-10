@@ -5,24 +5,28 @@
 
         <item
             android:id="@+id/nav_feature01"
-            android:icon="@drawable/baseline_home_24"
+            android:icon="@drawable/baseline_search_24"
             android:title="View Items" />
         <item
             android:id="@+id/nav_feature02"
-            android:icon="@drawable/baseline_bug_report_24"
+            android:icon="@drawable/baseline_star_rate_24"
             android:title="Rate Us" />
         <item
             android:id="@+id/nav_feature03"
-            android:icon="@drawable/baseline_contact_support_24"
-            android:title="Contact Us" />
+            android:icon="@drawable/baseline_calculate_24"
+            android:title="Calculate delivery time" />
         <item
             android:id="@+id/nav_feature04"
             android:icon="@drawable/baseline_info_24"
-            android:title="About" />
+            android:title="About Us" />
         <item
             android:id="@+id/nav_feature05"
             android:icon="@drawable/baseline_question_answer_24"
             android:title="FAQs" />
+        <item
+            android:id="@+id/nav_feature07"
+            android:icon="@drawable/baseline_history_24"
+            android:title="Order history" />
 
     </group>
 

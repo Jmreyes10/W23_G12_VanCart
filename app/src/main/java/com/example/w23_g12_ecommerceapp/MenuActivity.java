@@ -8,18 +8,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.room.Room;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -87,9 +78,9 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
 
         ImageSlider imageSlider = findViewById(R.id.imageSlider);
         ArrayList<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel(R.drawable.slider1, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.slider2, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.slider3, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.banner1, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.banner2, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.banner3, ScaleTypes.FIT));
 
         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
 
@@ -222,7 +213,7 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(this, Feature02Activity.class));
                 break;
             case R.id.nav_feature03:
-                startActivity(new Intent(this, Feature03Activity.class));
+                startActivity(new Intent(this, CheckOut.class));
                 break;
             case R.id.nav_feature04:
                 startActivity(new Intent(this, Feature04Activity.class));
@@ -235,6 +226,9 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
                 Intent intent = new Intent(getApplicationContext(), Login_App.class);
                 startActivity(intent);
                 finish();
+                break;
+            case R.id.nav_feature07:
+                startActivity(new Intent(this, Feature07.class));
                 break;
             case R.id.nav_profile:
                 startActivity(new Intent(this, Feature06Activity.class));

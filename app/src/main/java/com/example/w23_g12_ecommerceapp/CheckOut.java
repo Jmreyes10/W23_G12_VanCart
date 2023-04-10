@@ -4,11 +4,8 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.location.Location;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -55,22 +52,9 @@ public class CheckOut extends AppCompatActivity {
     private PlacesClient placesClient;
     private AutocompleteSupportFragment autocompleteFragment;
 
-    private EditText editText;
     TextView textView,txtDistInfo;
-    EditText fullname,phoneNumber;
 
-    Button btnPayment,clicktosave;
-    PaymentSheet paymentSheet;
-    String paymentIntentClientSecret;
-    PaymentSheet.CustomerConfiguration customerConfig;
-
-    Double totalOrder;
-    DBHelper dbHelper;
-    FirebaseAuth mAuth;
-
-    String valueToPass;
-    DBHelper DB;
-    String address,FullName,phonumber;
+    String address;
 
 
     @Override
@@ -79,12 +63,6 @@ public class CheckOut extends AppCompatActivity {
         setContentView(R.layout.activity_check_out);
         //textView.setText("Search for your delivery location here");
         txtDistInfo=findViewById(R.id.txtDistInfo);
-        DB = new DBHelper(this);
-        phoneNumber=findViewById(R.id.phoneNumber);
-        fullname=findViewById(R.id.fullname);
-
-        clicktosave=findViewById(R.id.clicktosave);
-
 
 
 
@@ -145,19 +123,19 @@ public class CheckOut extends AppCompatActivity {
                 float distanceInKm = distanceInMeters / 1000;
                 distanceInKm+=0.6;
 
+
                 double hr,min;
 
-                double Time=distanceInKm*3;
+                Float Time=distanceInKm*3;
                 Time+=60;
                 hr=Time/60;
                 min=Time%60;
-
 
                 // Display the distance in a Toast message
                 Toast.makeText(CheckOut.this, "Distance and Time Calculated", Toast.LENGTH_SHORT).show();
 
                 textView=findViewById(R.id.txtView);
-                txtDistInfo.setText("Distance: " + String.format("%.2f", distanceInKm) + " km" + "\nOrder will reach your door step in: "+String.format("%.0f", hr)+" hours " + String.format("%.0f", min)+ " mins");
+                txtDistInfo.setText("Distance: " + String.format("%.2f", distanceInKm) + " km" + "\nOrder will reach your door step in: "+String.format("%.0f", hr-1)+" hours " + String.format("%.0f", min)+ " mins");
             }
 
 
@@ -168,120 +146,45 @@ public class CheckOut extends AppCompatActivity {
             }
         });
 
-        btnPayment = findViewById(R.id.btnPayment);
-        paymentSheet = new PaymentSheet(this, this::onPaymentSheetResult);
-        mAuth = FirebaseAuth.getInstance();
-
-        //getting the data of price from previous activity
-        Bundle bundle = getIntent().getExtras();
-        totalOrder = bundle.getDouble("TOTAL");
-        valueToPass = String.valueOf((int)Math.round(totalOrder));
-        btnPayment.setVisibility(View.INVISIBLE);
-
-
-        clicktosave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                phonumber=phoneNumber.getText().toString();
-                clicktosave.setText("Comfirmed\u2713");
-                clicktosave.setBackgroundColor(Color.BLUE);
-
-                btnPayment.setVisibility(View.VISIBLE);
-
-                FullName=fullname.getText().toString();
-                Boolean insertOrder = DB.insertOrder(FullName,address,phonumber);
-                if(insertOrder){
-                    Toast.makeText(CheckOut.this, "confirmed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-
-        btnPayment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(CheckOut.this, totalOrder.toString(), Toast.LENGTH_SHORT).show();
-
-                getDetails();
-//                String addressTEXT = editText.getText().toString();
-//                Boolean save = dbHelper.saveUSerData("", "9090909090",addressTEXT);
-//                if (TextUtils.isEmpty(addressTEXT)){
-//                    Toast.makeText(CheckOut.this, "Address cannot be empty", Toast.LENGTH_SHORT).show();
-//                    return;
+//        clicktosave.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                FullName=fullname.getText().toString();
+//                Boolean insertOrder = DB.insertOrder(FullName,address);
+//                if(insertOrder){
+//                    Toast.makeText(CheckOut.this, "order table created", Toast.LENGTH_SHORT).show();
 //                }
-//                else {
-//                    if (save==true){
-//                        Toast.makeText(CheckOut.this, save.toString(), Toast.LENGTH_SHORT).show();
-//                        getDetails();
-//                    }else {
-//                        dbHelper.updateAddress(addressTEXT,mAuth.getCurrentUser().getEmail(),"604-123-9001", addressTEXT);
-//                        getDetails();
-//                        return;
-//                    }
-//                }
-            }
-        });
-
-        editText = findViewById(R.id.editTextTextPostalAddress);
-        dbHelper = new DBHelper(this);
-
-
-    }
-
-    void getDetails(){
-        Fuel.INSTANCE.post("https://us-central1-csis3175-7b517.cloudfunctions.net/stripePayment?amt=" + valueToPass  ,null).responseString(new Handler<String>() {
-            @Override
-            public void success(String s) {
-                try {
-                    JSONObject result = new JSONObject(s);
-                    customerConfig = new PaymentSheet.CustomerConfiguration(
-                            result.getString("customer"),
-                            result.getString("ephemeralKey")
-                    );
-                    paymentIntentClientSecret = result.getString("paymentIntent");
-                    PaymentConfiguration.init(getApplicationContext(), result.getString("publishableKey"));
-
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            showStripePmtSheet();
-                        }
-                    });
-
-                }catch (JSONException e){
-                    Toast.makeText(CheckOut.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void failure(@NonNull FuelError fuelError) {
-
-            }
-        });
-    }
-
-    void showStripePmtSheet(){
-
-        final PaymentSheet.Configuration configuration = new PaymentSheet.Configuration.Builder("VanCart.")
-                .customer(customerConfig)
-                .allowsDelayedPaymentMethods(true)
-                .build();
-        paymentSheet.presentWithPaymentIntent(
-                paymentIntentClientSecret,
-                configuration
-        );
+//            }
+//        });
+//
+//
+//        btnPayment.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(CheckOut.this, totalOrder.toString(), Toast.LENGTH_SHORT).show();
+//
+//                getDetails();
+////                String addressTEXT = editText.getText().toString();
+////                Boolean save = dbHelper.saveUSerData("", "9090909090",addressTEXT);
+////                if (TextUtils.isEmpty(addressTEXT)){
+////                    Toast.makeText(CheckOut.this, "Address cannot be empty", Toast.LENGTH_SHORT).show();
+////                    return;
+////                }
+////                else {
+////                    if (save==true){
+////                        Toast.makeText(CheckOut.this, save.toString(), Toast.LENGTH_SHORT).show();
+////                        getDetails();
+////                    }else {
+////                        dbHelper.updateAddress(addressTEXT,mAuth.getCurrentUser().getEmail(),"604-123-9001", addressTEXT);
+////                        getDetails();
+////                        return;
+////                    }
+////                }
+//            }
+//        });
 
     }
-    void onPaymentSheetResult(final PaymentSheetResult paymentSheetResult){
-        if (paymentSheetResult instanceof PaymentSheetResult.Canceled) {
-            Toast.makeText(this, "Canceled", Toast.LENGTH_SHORT).show();
-        } else if (paymentSheetResult instanceof PaymentSheetResult.Failed) {
-            Toast.makeText(this, ((PaymentSheetResult.Failed) paymentSheetResult).getError().toString(), Toast.LENGTH_SHORT).show();
-        } else if (paymentSheetResult instanceof PaymentSheetResult.Completed) {
-            // Display for example, an order confirmation screen
-            startActivity(new Intent(this,ThankYou.class));
-            Toast.makeText(this, "Completed", Toast.LENGTH_SHORT).show();        }
-    }
-    }
+
+}
 
 
