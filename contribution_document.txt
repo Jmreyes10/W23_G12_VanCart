@@ -15,6 +15,15 @@ Harkirat Singh - [29 Jan 2023] All group members proposed an idea each to profes
                  [06 Apr 2023]-Created User Profile page
                  [06 Apr 2023]-Created a sqlite database to store user address and phone number locally.
                  [06 Apr 2023]-Created a page to show order has been placed.
+                 [10 Apr 2023]-Created Order History Database using SQLite
+                 [10 Apr 2023]-Implemented order history in activity using recycler view.
+                 [10 Apr 2023]-Created User table and Model using SQLite
+                 [10 Apr 2023]-Implemented username, email, address in activity.
+                 [10 Apr 2023]-Allowed users to perform Update actions on their information from activity.
+                 [10 Apr 2023]-Added animations to home page using lottie + reformed some UI for home page.
+                 [10 Apr 2023]-Set Icons and data for navigation slider
+                 [10 Apr 2023]-Created new images for banner at home and linked them
+                 [10 Apr 2023]-Tried using LiveData for order history and user but after a lot of trying was not able to do it.
 
 Jose Mario Reyes-[29 Jan 2023] All group members proposed an idea each to professor.
                  [16 Feb 2023] Created a login activity frame as a starting point, displaying the login and signup forms.
