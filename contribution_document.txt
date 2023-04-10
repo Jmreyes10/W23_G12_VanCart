@@ -51,6 +51,8 @@ Jose Mario Reyes-[29 Jan 2023] All group members proposed an idea each to profes
                  [05 Apr 2023] - Display a dashboard with 4 pie charts showing the rates distribution for the correspondent aspect and one bar chart showing the average 
                                  rating for each of the 4 aspects
                  [05 Apr 2023] - Included a button to go back to the main menu
+                 [10 Apr 2023] - Included the "About" activity
+                 [10 Apr 2023] - Included the code for clearing the products in cart database table when the app starts, in order to have an empty cart after log in.
 
                  
 Shaun Ritty-[29 Jan 2023] All group members proposed an idea each to professor.
