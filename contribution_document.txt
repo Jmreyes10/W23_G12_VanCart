@@ -26,6 +26,9 @@ Harkirat Singh - [29 Jan 2023]-All group members proposed an idea each to profes
                  [10 Apr 2023]-Tried using LiveData for order history and user but after a lot of trying was not able to do it.
                  [10 Apr 2023]-Added validation in Signup, Profile, Login, Forget Activities for email. 
                  [10 Apr 2023]-Added hide/show password in signup and login. 
+                 [10 Apr 2023]-Created layout of Profile page
+                 [10 Apr 2023]-Added an alert dialog asking for correct address after each order
+
 
 Jose Mario Reyes-[29 Jan 2023] All group members proposed an idea each to professor.
                  [16 Feb 2023] Created a login activity frame as a starting point, displaying the login and signup forms.
