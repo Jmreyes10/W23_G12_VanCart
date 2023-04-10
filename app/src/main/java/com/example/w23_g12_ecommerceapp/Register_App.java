@@ -95,6 +95,10 @@ public class Register_App extends AppCompatActivity {
                     return;
                 }
 
+                if (password.length() < 8){
+                    editPasswordText.setError("You must have at least 8 characters in your password");
+                }
+
                 if (TextUtils.isEmpty(address)) {
                     Toast.makeText(Register_App.this, "Address cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
@@ -137,4 +141,5 @@ public class Register_App extends AppCompatActivity {
             return false;
         }
     }
+
 }

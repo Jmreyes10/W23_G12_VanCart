@@ -37,12 +37,13 @@ public class Login_App extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
+        if (currentUser != null) {
             Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
             startActivity(intent);
             finish();
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();
@@ -82,10 +83,15 @@ public class Login_App extends AppCompatActivity {
                     return;
                 }
 
-                if(email.equals("driver@gmail.com") && password.equals("driver123")){
-                    Intent intent=new Intent(getApplicationContext(),DriverApp.class);
+
+                if (password.length() < 8) {
+                    editPasswordText.setError("You must have at least 8 characters in your password");
+                }
+
+                if (email.equals("driver@gmail.com") && password.equals("driver123")) {
+                    Intent intent = new Intent(getApplicationContext(), DriverApp.class);
                     startActivity(intent);
-                }else{
+                } else {
 
                     if (isValidEmail(email)) {
                         mAuth.signInWithEmailAndPassword(email, password)
@@ -110,7 +116,6 @@ public class Login_App extends AppCompatActivity {
                 }
 
 
-
             }
         });
 
@@ -123,11 +128,12 @@ public class Login_App extends AppCompatActivity {
             }
         });
     }
+
     public boolean isValidEmail(String emailInput) {
 
-        if (!emailInput.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()){
+        if (!emailInput.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
             return true;
-        }else {
+        } else {
             Toast.makeText(this, "Please enter a valid email", Toast.LENGTH_SHORT).show();
             return false;
         }
