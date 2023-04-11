@@ -73,13 +73,22 @@ Shaun Ritty-[29 Jan 2023] All group members proposed an idea each to professor.
             [7 Feb 2023] Proposed few extensions to integrate with the application.
             [17 Feb 2023] Creating a reset password activity with firebase authentication. 
             [08 March 2023] Added logo to the App. 
-            [13 March 2023] Created new login page and Sign Up page.Created new database called App using SQLite.User registeration and Login now possible.
+            [13 March 2023] Created new login page and Sign Up page.
+            [13 March 2023] Created new Sign Up page.
+            [13 March 2023] Created new database called App using SQLite.User registeration and Login now possible.
             [14 March 2023] Display logged username on menu page.
             [16 March 2023] Forgot password implemented.
             [16 March 2023] Notification extension added.
-            [22 March 2023] Implemeted autofill address for checkoit page.
+            [22 March 2023] Implemeted autofill address for checkout page.
             [28 March 2023] calculate distance between two locations.
             [30 March 2023] Create checkout page with distance matrix api
-            [02 April 2023] Created driver page. Order details showed and google map navigation.
+            [02 April 2023] Created driver login.
+            [02 April 2023] Created driver App.
+            [03 April 2023] create order table when order is placd.
+            [04 April 2023] Order details showing in driver app. 
+            [04 April 2023] order list showing user phone number and name.
+            [05 April 2023] google map navigation to delivery address.
+            [08 April 2023] created FAQs
+
             
             
