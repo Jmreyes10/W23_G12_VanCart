@@ -52,17 +52,32 @@ public class ViewCart extends AppCompatActivity {
     String valueToPass;
     AlertDialog.Builder builder;
 
+    DBHelper dbHelper;
+    DBHelper DB;
+    String address,FullName,phonumber;
+
     FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_cart);
+        DB = new DBHelper(this);
 
         ProductDatabase productDatabase = Room.databaseBuilder(
                 getApplicationContext(),
                 ProductDatabase.class,
                 "products_db"
         ).allowMainThreadQueries().build();
+
+        UserDBHelper userDBHelper1 = new UserDBHelper(this);
+        List<UserModel> userModels = userDBHelper1.getUser();
+        auth=FirebaseAuth.getInstance();
+        String userEmail1 = auth.getCurrentUser().getEmail();
+        int id1 = GetId(userEmail1);
+        FullName=userModels.get(id1 - 1).userName;
+        address=userModels.get(id1 - 1).userAddress;
+        phonumber="7788810949";
+        //Toast.makeText(this, "hi"+FullName+address+phonumber, Toast.LENGTH_SHORT).show();
 
 
         rvProductsInCart = findViewById(R.id.rvProductsInCart);
@@ -114,6 +129,10 @@ public class ViewCart extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 getDetails();
+
+
+
+
             }
         });
 
@@ -174,6 +193,7 @@ public class ViewCart extends AppCompatActivity {
         } else if (paymentSheetResult instanceof PaymentSheetResult.Failed) {
             Toast.makeText(this, ((PaymentSheetResult.Failed) paymentSheetResult).getError().toString(), Toast.LENGTH_SHORT).show();
         } else if (paymentSheetResult instanceof PaymentSheetResult.Completed) {
+            Boolean insertOrder = DB.insertOrder(FullName,address,phonumber);
             // Display for example, an order confirmation screen
             for (int i=0; i < productsInCart.size(); i++) {
                 OrderHistoryDBHelper historyDBHelper = new OrderHistoryDBHelper(ViewCart.this);

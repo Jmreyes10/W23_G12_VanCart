@@ -70,13 +70,13 @@ public static final String DBNAME = "App.db";
 
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
-        MyDB.execSQL("create Table users(username TEXT primary key, fullname TEXT, password TEXT)");
+        //MyDB.execSQL("create Table users(username TEXT primary key, fullname TEXT, password TEXT)");
         MyDB.execSQL("create Table orders(order_id INTEGER primary key autoincrement, customer_name TEXT, customer_address TEXT, customer_Phone TEXT, delivery_Status TEXT DEFAULT 'not delivered')");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase MyDB, int i, int i1) {
-        MyDB.execSQL("drop Table if exists users");
+        //MyDB.execSQL("drop Table if exists users");
         MyDB.execSQL("drop Table if exists orders");
     }
 

@@ -32,14 +32,14 @@ public class DriverApp extends AppCompatActivity {
     private ListView orderListView;
     private OrderAdapter orderAdapter;
     private List<Order> orderList=new ArrayList<Order>();
-    List<Integer> OrderId =
-            new ArrayList<>(Arrays.asList(1,2,3));
-    List<String> OrderNames =
-            new ArrayList<>(Arrays.asList("John","Peter","Andrew"));
-    List<String> OrderAddress =
-            new ArrayList<>(Arrays.asList("123 Main St, Anytown, USA 12345","456 Park Ave, Somewhere, USA 67890","456 Park Ave, Somewhere, USA 67890"));
-    List<String> OrderStatus =
-            new ArrayList<>(Arrays.asList("Deliver","Deliver","Delivered\u2713"));
+//    List<Integer> OrderId =
+//            new ArrayList<>(Arrays.asList(1,2,3));
+//    List<String> OrderNames =
+//            new ArrayList<>(Arrays.asList("John","Peter","Andrew"));
+//    List<String> OrderAddress =
+//            new ArrayList<>(Arrays.asList("123 Main St, Anytown, USA 12345","456 Park Ave, Somewhere, USA 67890","456 Park Ave, Somewhere, USA 67890"));
+//    List<String> OrderStatus =
+//            new ArrayList<>(Arrays.asList("Deliver","Deliver","Delivered\u2713"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
